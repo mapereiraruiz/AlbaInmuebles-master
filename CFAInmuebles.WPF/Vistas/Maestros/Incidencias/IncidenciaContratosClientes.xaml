@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.IncidenciaContratosClientes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             mc:Ignorable="d" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <DockPanel>
+        <Label DockPanel.Dock="Top" Style="{StaticResource CustomLabelMaestros}">Contratos Clientes</Label>
+        <Border  DockPanel.Dock="Top"  Style="{StaticResource gridBorder}"  Height="Auto">
+            <dxg:GridControl  DockPanel.Dock="Top"  ItemsSource="{Binding ContratosClientes}" SelectedItem="{Binding Path=SelectedItem}"  >
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}"  Header="Nif" Binding="{Binding Nif, UpdateSourceTrigger=PropertyChanged}" Width="25*" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}"  Header="Número Contrato" Binding="{Binding NumeroContrato,  UpdateSourceTrigger=PropertyChanged}" Width="25*" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}"  Header="Tipo Ipc" Binding="{Binding IdTipoIpcNavigation, UpdateSourceTrigger=PropertyChanged}" Width="25*" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}"  Header="Forma de Pago" Binding="{Binding IdFormaPagoNavigation, UpdateSourceTrigger=PropertyChanged}" Width="15*" />
+                </dxg:GridControl.Columns>
+            </dxg:GridControl>
+        </Border>
+    </DockPanel>
+</UserControl>
+

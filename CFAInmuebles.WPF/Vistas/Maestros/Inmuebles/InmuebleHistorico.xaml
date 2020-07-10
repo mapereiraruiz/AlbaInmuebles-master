@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.InmuebleHistorico"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"           
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             mc:Ignorable="d"          
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <DockPanel >
+        <Label DockPanel.Dock="Top" Style="{StaticResource CustomLabelMaestros}">Histórico Modificaciones</Label>
+        <Border  DockPanel.Dock="Bottom"  Style="{StaticResource gridBorder}">
+            <dxg:GridControl   AutoGenerateColumns="None" ItemsSource="{Binding HistoricoInmuebles}"  SelectedItem="{Binding Path=SelectedItem}"  >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" CommandParameter="{Binding SelectedItem}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Inmueble" Binding="{Binding IdInmuebleNavigation.Inmueble, UpdateSourceTrigger=PropertyChanged}" MinWidth="250" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Empresa" Binding="{Binding IdEmpresaNavigation.Empresa, UpdateSourceTrigger=PropertyChanged}" MinWidth="250" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Calle"  Binding="{Binding Calle, StringFormat={}{0:dd-MM-yyyy},  UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Municipio"  Binding="{Binding Municipio, StringFormat={}{0:dd-MM-yyyy},  UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha Modificación" Binding="{Binding FechaSistema, UpdateSourceTrigger=PropertyChanged}"  EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Usuario Modificación" Binding="{Binding IdUsuarioNavigation.NombreUsuario, UpdateSourceTrigger=PropertyChanged}" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Concepto Facturación" Binding="{Binding IdConceptoFacturacionNavigation.Conceptofacturacion1, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Centro Coste" Binding="{Binding IdInmuebleCentroCosteNavigation.Valor, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Provincia" Binding="{Binding IdProvinciaNavigation.Provincia, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Tipo Inmueble" Binding="{Binding IdTipoInmuebleNavigation.TipoInmueble, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Tipo Artículo" Binding="{Binding IdTipoArticuloNavigation.Tipoarticulo, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Abreviatura" Binding="{Binding Abreviatura, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Archivo Digital" Binding="{Binding ArchivoDigital, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Código Postal" Binding="{Binding CodigoPostal, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha Aeat" Binding="{Binding FechaAeat, UpdateSourceTrigger=PropertyChanged}" EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha Compra" Binding="{Binding FechaCompra, UpdateSourceTrigger=PropertyChanged}"  EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha Eliminación" Binding="{Binding FechaEliminacion, UpdateSourceTrigger=PropertyChanged}" EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha Venta" Binding="{Binding FechaVenta, UpdateSourceTrigger=PropertyChanged}" EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Historial Incidencia" Binding="{Binding HistorialIncidencia, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Importe Compra" Binding="{Binding ImporteCompra, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Importe Venta" Binding="{Binding ImporteVenta, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Municipio" Binding="{Binding Municipio, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Num Plaza Alba" Binding="{Binding NumPlazaAlba, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Num Plaza Catastral" Binding="{Binding NumPlazaCatastral, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Num Plaza Registral" Binding="{Binding NumPlazaRegistral, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Ref Castastral General" Binding="{Binding ReferenciaCatastralGeneral, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Superficie Alba B" Binding="{Binding SuperficieAlbaB, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Superficie Alba S" Binding="{Binding SuperficieAlbaS, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Superficie Catastral B" Binding="{Binding SuperficieCatastralB, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Superficie Catastral S" Binding="{Binding SuperficieCatastralS, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Superficie Parcela" Binding="{Binding SuperficieParcela, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Superficie Registral B" Binding="{Binding SuperficieRegistralB, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Superficie Registral S" Binding="{Binding SuperficieRegistralS, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Tasa Basuras" Binding="{Binding TasaBasuras, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Tasa Capitalización" Binding="{Binding TasaCapitalizacion, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Uso Propio" Binding="{Binding UsoPropio, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Valor Edificio" Binding="{Binding ValorEdificio, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Valor Edificio Aeat" Binding="{Binding ValorEdificioAeat, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Valor Plaza Garaje" Binding="{Binding ValorPlazaGaraje, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Valor Suelo" Binding="{Binding ValorSuelo, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Valor Suelo Aeat" Binding="{Binding ValorSueloAeat, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Servicios Conserjeria" Binding="{Binding ServiciosConserjeria, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Servicios Vigilancia 24h" Binding="{Binding ServiciosVigilancia24h, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Servicios Personal Mantenimiento" Binding="{Binding ServiciosPersonalMantenimiento, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Servicios Recepcion" Binding="{Binding ServiciosRecepcion, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Servicios Paqueteria" Binding="{Binding ServiciosPaqueteria, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Instalaciones Aire Acondicionado" Binding="{Binding InstalacionesAireAcondicionado, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Instalaciones Calefaccion" Binding="{Binding InstalacionesCalefaccion, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Instalaciones Ascensores" Binding="{Binding InstalacionesAscensores, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Instalaciones Incendios" Binding="{Binding InstalacionesIncendios, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Instalaciones Control Accesos" Binding="{Binding InstalacionesControlAccesos, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Instalaciones CCTV" Binding="{Binding InstalacionesCCTV, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Instalaciones Iluminacion" Binding="{Binding InstalacionesIluminacion, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Instalaciones PCI" Binding="{Binding InstalacionesPCI, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Instalaciones Scanner" Binding="{Binding InstalacionesScanner, UpdateSourceTrigger=PropertyChanged}"  />
+
+                </dxg:GridControl.Columns>
+
+                <dxg:GridControl.View>
+                    <dxg:TableView AllowConditionalFormattingMenu="true" >
+                        <dxg:TableView.FormatConditions>
+                            <dxg:DataBarFormatCondition FieldName="Porcentaje" PredefinedFormatName="GreenGradientDataBar"/>
+                        </dxg:TableView.FormatConditions>
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Border>
+    </DockPanel>
+</UserControl>
+

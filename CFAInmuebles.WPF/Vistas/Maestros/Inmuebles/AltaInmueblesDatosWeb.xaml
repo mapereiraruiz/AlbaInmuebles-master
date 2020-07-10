@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.AltaInmueblesDatosWeb"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"           
+             mc:Ignorable="d"          
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Row="0" Margin="0" x:Name="Contenido">
+
+            <Label Canvas.Top="20"   Content="Servicios-Conserjería"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="20" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding ServiciosConserjeria, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="60"   Content="Servicios-Vigilancia 24h"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="60" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding ServiciosVigilancia24h, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="100"   Content="Servicios-Personal Mantenimiento"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="100" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding ServiciosPersonalMantenimiento, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+            
+            <Label Canvas.Top="140"   Content="Servicios-Recepción"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="140" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding ServiciosRecepcion, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="180"   Content="Servicios-Paquetería"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="180" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding ServiciosPaqueteria, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="220"   Content="Instalaciones-Aire Acondicionado"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="220" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding InstalacionesAireAcondicionado, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+            
+            <Label Canvas.Top="260"   Content="Instalaciones-Calefacción"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="260" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding InstalacionesCalefaccion, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+            
+            <Label Canvas.Top="300"   Content="Instalaciones-Ascensores"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="300" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding InstalacionesAscensores, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="340"   Content="Instalaciones-Incendios"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="340" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding InstalacionesIncendios, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="380"   Content="Instalaciones-Control de Accesos"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="380" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding InstalacionesControlAccesos, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="420"   Content="Instalaciones-CCTV"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="420" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding InstalacionesCCTV, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="460"   Content="Instalaciones-Iluminación"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="460" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding InstalacionesIluminacion, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="500"   Content="Instalaciones-PCI"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="500" Canvas.Left="200" Style="{StaticResource UserControlTextSmall}" Text="{Binding InstalacionesPCI, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="20" Canvas.Left="575"  Content="Instalaciones-Scanner Seguridad"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="20" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding InstalacionesScanner, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="60" Canvas.Left="575"  Content="General-Descripción"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="60" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding GeneralDescripcion, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDescripcion}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="100" Canvas.Left="575"  Content="General-Uso"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="100" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding GeneralUso, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="140" Canvas.Left="575"  Content="General-Superficie"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="140" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding GeneralSuperficie, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="180" Canvas.Left="575"  Content="General-Aparcamiento"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="180" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding GeneralAparcamiento, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="220" Canvas.Left="575"  Content="General-Nº. Plazas"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="220" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding GeneralNumeroPlazas, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="260" Canvas.Left="575"  Content="Calidades-Falsos Techos"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="260" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding CalidadesFalsosTechos, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="300" Canvas.Left="575"  Content="Calidades-Suelos Técnicos"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="300" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding CalidadesSuelosTecnicos, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="340" Canvas.Left="575"  Content="Calidades-Pavimentos"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="340" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding CalidadesPavimentos, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="380" Canvas.Left="575"  Content="Calidades-Fachada/Pavimentos"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="380" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding CalidadesFachada, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="420" Canvas.Left="575"  Content="Calidades-Carpinterías"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="420" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding CalidadesCarpinterias, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="460" Canvas.Left="575"  Content="Calidades-Revestimientos"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="460" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding CalidadesRevestimientos, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Label Canvas.Top="500" Canvas.Left="575"  Content="Calidades-Aseos Adaptados"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="500" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding CalidadesAseosAdaptados, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxDato}"  TextWrapping="Wrap"  Width="250"  />
+
+            <Grid x:Name="pnlMessage" Canvas.Top="400" Visibility="{Binding MostrarMensajes}" Width="{Binding ActualWidth, ElementName=Contenido, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Background="Transparent" Style="{StaticResource ErrorText}" Grid.Column="0" BorderThickness="0" Text="{Binding Mensaje, Mode=OneWay}"  IsReadOnly="True" TextWrapping="Wrap" IsTabStop="False"/>
+                <Button Grid.Column="1" x:Name="btnCerrarMensajes" Content="Cerrar" HorizontalAlignment="Stretch"  Style="{StaticResource ButtonMensaje}" 
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.CerrarMensajes}"></Button>
+            </Grid>
+        </Canvas>
+
+    </Grid>
+</UserControl>

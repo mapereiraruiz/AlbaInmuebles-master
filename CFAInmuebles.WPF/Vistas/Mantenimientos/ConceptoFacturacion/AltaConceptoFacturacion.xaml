@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.AltaConceptoFacturacion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             mc:Ignorable="d" 
+             Style="{StaticResource CustomStyleUserControl}"
+             d:DesignHeight="600" d:DesignWidth="800">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}" CommandParameter="{Binding TipoIpc}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0" Margin="20" x:Name="Contenido">
+
+            <Label Canvas.Top="50" x:Name="lblConcepto"  Style="{StaticResource CustomLabelMaestros}"   Content="Concepto de Facturación:"  />
+            <TextBox Canvas.Top="50" Canvas.Left="210" Style="{StaticResource UserControlText}" Text="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=Conceptofacturacion1,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" MaxLength="{Binding MaxConceptoFacturacion}" TextWrapping="Wrap"  Width="350" />
+
+            <Label Canvas.Top="90" x:Name="lblTipoConcepto"  Style="{StaticResource CustomLabelMaestros}"  Content="Tipo Concepto:" />
+            <ComboBox Canvas.Top="90" Canvas.Left="210" Style="{StaticResource UserControlComboBox}" ItemsSource="{Binding TipoConceptos}"  
+                                     IsEditable="True" IsReadOnly="True"  Width="350" SelectedItem="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=TipoConcepto,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}">
+            </ComboBox>
+
+            <Label Canvas.Top="130" x:Name="lblCuentaContable"  Style="{StaticResource CustomLabelMaestros}"   Content="Cuenta Contable:"  />
+            <TextBox Canvas.Top="130" Canvas.Left="210" Style="{StaticResource UserControlText}"  Text="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=CuentaContable,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" TextWrapping="Wrap" MaxLength="{Binding MaxCuentaContable}" Width="350" />
+
+            <Label Canvas.Top="170" x:Name="lblTipoIva"  Style="{StaticResource CustomLabelMaestros}"  Content="Tipo Iva:" />
+            <ComboBox Canvas.Top="170" Canvas.Left="210" Style="{StaticResource UserControlComboBox}"  ItemsSource="{Binding TipoIvas}"  SelectedItem="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=TipoIva,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  Width="350" />
+
+            <Label Canvas.Top="210" x:Name="lblCatalogarConcepto"  Style="{StaticResource CustomLabelMaestros}"  Content="Catalogar Concepto:" />
+            <ComboBox Canvas.Top="210" Canvas.Left="210" Style="{StaticResource UserControlComboBox}" ItemsSource="{Binding CatalogarConceptos}"  SelectedItem="{Binding CatalogarConcepto}" 
+                                     IsEditable="True" IsReadOnly="True" Width="350" />
+            
+          
+            <Label Canvas.Top="250" x:Name="lblRevisableIpc"   Style="{StaticResource CustomLabelMaestros}" Content="Revisable Ipc:" />
+            <CheckBox Canvas.Top="250" Canvas.Left="210" Style="{StaticResource UserControlCheckBox}" IsChecked="{Binding RevisableIpc}" >
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="1.75" ScaleY="1.75" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+
+            <Label Canvas.Top="290" x:Name="lblCuentaGasto"  Style="{StaticResource CustomLabelMaestros}"   Content="Cuenta Gasto:"  />
+            <TextBox Canvas.Top="290" Canvas.Left="210" Style="{StaticResource UserControlText}" x:Name="txtCuentaGasto" TextWrapping="Wrap" MaxLength="{Binding MaxCuentaGasto}" Text="{Binding CuentaGasto}" Width="350"/>
+
+
+            <Label Canvas.Top="330" x:Name="lblEmpresa"  Style="{StaticResource CustomLabelMaestros}" Content="Empresa:" />
+            <ComboBox Canvas.Top="330" Canvas.Left="210" Style="{StaticResource UserControlComboBox}" x:Name="txtEmpresa" ItemsSource="{Binding Empresas}"  SelectedItem="{Binding Empresa}" 
+                                     IsEditable="True" IsReadOnly="True"  Width="350" />
+
+           
+            <UniformGrid  Canvas.Top="390" Canvas.Left="210"  Rows="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <Button  x:Name="btnvolver"  Style="{StaticResource StackPanelPadding}" Content="Volver al Listado"    
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.VolverCommand}" />
+                <Button x:Name="btncrear" Style="{StaticResource StackPanelPadding}" Content="Guardar"   
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" />
+                <Button x:Name="btneliminar" Visibility="{Binding MostrarBotones}"  Style="{StaticResource StackPanelPadding}" Content="Eliminar"    
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.DeleteCommand}"  CommandParameter="{Binding TipoIpc}" />
+            </UniformGrid>
+
+            <Grid x:Name="pnlMessage" Canvas.Top="450" Visibility="{Binding MostrarMensajes}" Width="{Binding ActualWidth, ElementName=Contenido, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Background="Transparent" Style="{StaticResource ErrorText}" Grid.Column="0" BorderThickness="0" Text="{Binding Mensaje, Mode=OneWay}"  IsReadOnly="True" TextWrapping="Wrap" IsTabStop="False"/>
+                <Button Grid.Column="1" x:Name="btnCerrarMensajes" Content="Cerrar" HorizontalAlignment="Stretch"  Style="{StaticResource ButtonMensaje}" 
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.CerrarMensajes}"></Button>
+            </Grid>
+        </Canvas>
+    </Grid>
+</UserControl>

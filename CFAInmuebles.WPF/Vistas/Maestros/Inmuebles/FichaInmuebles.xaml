@@ -1,0 +1,186 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.FichaInmuebles"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             Template="{StaticResource UserControlMaestroVM}"
+             Style="{StaticResource CustomStyleUserControl}"
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type local:AltaInmueblesVM}" >
+            <local:AltaInmuebles />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaInmueblesJuridicoVM}" >
+            <local:AltaInmueblesJuridico />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaInmueblesAdministracionVM}" >
+            <local:AltaInmueblesAdministracion />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaInmueblesArchivoDigitalVM}" >
+            <local:AltaInmueblesArchivoDigital />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaInmueblesDatosWebVM}" >
+            <local:AltaInmueblesDatosWeb />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleObrasVM}" >
+            <local:InmuebleObras />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaInmuebleObrasVM}" >
+            <local:AltaInmuebleObras />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleArticulosVM}" >
+            <local:InmuebleArticulos />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleTareasVM}" >
+            <local:InmuebleTareas />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleIncidenciasVM}" >
+            <local:InmuebleIncidencias />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleContratosClientesVM}" >
+            <local:InmuebleContratosClientes />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleContratosProveedoresVM}" >
+            <local:InmuebleContratosProveedores />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleReferenciaCatastralVM}" >
+            <local:InmuebleReferenciaCatastral />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaInmuebleReferenciaCatastralVM}" >
+            <local:AltaInmuebleReferenciaCatastral />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleLicenciasVM}" >
+            <local:InmuebleLicencias />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaInmuebleLicenciasVM}" >
+            <local:AltaInmuebleLicencias />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleHistoricoSegurosVM}" >
+            <local:InmuebleHistoricoSeguros />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleHistoricoTasacionesVM}" >
+            <local:InmuebleHistoricoTasaciones />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleMantenimientoPreventivoVM}" >
+            <local:InmuebleMantenimientoPreventivo />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleMantenimientoNormativoVM}" >
+            <local:InmuebleMantenimientoNormativo />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleCentroCostesVM}" >
+            <local:InmuebleCentroCostes />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleContactosVM}" >
+            <local:InmuebleContactos />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleVentasParcialesVM}" >
+            <local:InmuebleVentasParciales />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaContactoInmuebleVM}" >
+            <local:AltaContactoInmueble />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaVentaParcialInmuebleVM}" >
+            <local:AltaVentaParcialInmueble />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:InmuebleHistoricoVM}" >
+            <local:InmuebleHistorico />
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <DockPanel Margin="20">
+        <Menu DockPanel.Dock="Top" HorizontalAlignment="Left" Padding="3" Style="{StaticResource menuItemMaestro}"   >
+            <MenuItem Header="Identificación"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding AltaInmuebles}" Margin="2,5"/>
+
+            <MenuItem Header="Jurídico"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding AltaInmueblesJuridico}" Margin="2,5"/>
+
+            <MenuItem Header="Administración"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding AltaInmueblesAdministracion}"  Margin="2,5"/>
+
+            <MenuItem Header="Archivo Digital"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding AltaInmueblesArchivoDigital}" Margin="2,5"/>
+
+            <MenuItem Header="Datos Web"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding AltaInmueblesDatosWeb}" Margin="2,5"/>
+
+            <MenuItem Header="Obras"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleObras}" Margin="2,5"/>
+            
+            <MenuItem Header="Artículos"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleArticulos}" Margin="2,5"/>
+            
+            <MenuItem Header="Tareas"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleTareas}" Margin="2,5"/>
+           
+            <MenuItem Header="Incidencias"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleIncidencias}" Margin="2,5"/>
+
+            <MenuItem Header="Contratos Clientes"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleContratosClientes}" Margin="2,5"/>
+
+            <MenuItem Header="Contratos Proveedores"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleContratosProveedores}" Margin="2,5"/>
+
+            <MenuItem Header="Referencias Catastrales"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleReferenciaCatastral}" Margin="2,5"/>
+            
+            <MenuItem Header="Licencias"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleLicencias}" Margin="2,5"/>
+
+            <MenuItem Header="Histórico Seguros"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleHistoricoSeguros}" Margin="2,5"/>
+            
+            <MenuItem Header="Histórico Tasaciones"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleHistoricoTasaciones}" Margin="2,5"/>
+
+            <MenuItem Header="Mantenimientos Preventivos"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleMantenimientoPreventivo}" Margin="2,5"/>
+
+            <MenuItem Header="Mantenimientos Normativos"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleMantenimientoNormativo}" Margin="2,5"/>
+
+            <MenuItem Header="Centro Costes"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleCentroCostes}" Margin="2,5"/>
+
+            <MenuItem Header="Contactos"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleContactos}" Margin="2,5"/>
+
+            <MenuItem Header="Ventas Parciales"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleVentasParciales}" Margin="2,5"/>
+
+            
+            <MenuItem Header="Histórico Modificaciones"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding InmuebleHistorico}" Margin="2,5"/>
+
+        </Menu>
+
+        <ContentControl  Margin="5" Content="{Binding Path=CurrentPageViewModel}" />
+
+    </DockPanel>
+
+</UserControl>

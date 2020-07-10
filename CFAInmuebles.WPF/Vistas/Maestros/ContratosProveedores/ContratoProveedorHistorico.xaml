@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.ContratoProveedorHistorico"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"  
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             mc:Ignorable="d"          
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <DockPanel >
+        <Label DockPanel.Dock="Top" Style="{StaticResource CustomLabelMaestros}">Histórico Modificaciones</Label>
+        <Border  DockPanel.Dock="Bottom"  Style="{StaticResource gridBorder}">
+            <dxg:GridControl   AutoGenerateColumns="None" ItemsSource="{Binding HistoricoContratosProveedores}"  SelectedItem="{Binding Path=SelectedItem}"  >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" CommandParameter="{Binding SelectedItem}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Inmueble"  Binding="{Binding IdInmuebleNavigation.Inmueble, StringFormat={}{0:dd-MM-yyyy},  UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Proveedor" Binding="{Binding IdContatoProveedorNavigation.NombreProveedor, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Empresa"  Binding="{Binding IdEmpresaNavigation.Empresa, StringFormat={}{0:dd-MM-yyyy},  UpdateSourceTrigger=PropertyChanged}" />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Referencia Contrato" Binding="{Binding ReferenciaContrato, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Importe Factura" Binding="{Binding ImporteFactura, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha Modificación" Binding="{Binding FechaSistema, UpdateSourceTrigger=PropertyChanged}" EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}" />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Usuario Modificación" Binding="{Binding IdUsuarioNavigation.NombreUsuario, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Servicio" Binding="{Binding Servicio, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Coste Anual" Binding="{Binding CosteAnual, UpdateSourceTrigger=PropertyChanged}" />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha" Binding="{Binding Fecha, UpdateSourceTrigger=PropertyChanged}" EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}"/>
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Periodicidad Coste" Binding="{Binding IdPeriodicidadCosteNavigation.Valor, UpdateSourceTrigger=PropertyChanged}"  />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Periodicidad Revisión" Binding="{Binding IdPeriodicidadRevisionNavigation.Valor, UpdateSourceTrigger=PropertyChanged}" />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha Baja" Binding="{Binding FechaBaja, UpdateSourceTrigger=PropertyChanged}" EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}"/>
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha Eliminacion" Binding="{Binding FechaEliminacion, UpdateSourceTrigger=PropertyChanged}" EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}"/>
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha Preaviso" Binding="{Binding FechaPreaviso, UpdateSourceTrigger=PropertyChanged}" EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}"/>
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha Vencimiento" Binding="{Binding FechaVencimiento, UpdateSourceTrigger=PropertyChanged}" EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}"/>
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Centro Coste" Binding="{Binding IdInmuebleCentroCosteNavigation.Valor, UpdateSourceTrigger=PropertyChanged}" />
+                    <!--<dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Varios 1" Binding="{Binding Varios1, UpdateSourceTrigger=PropertyChanged}" />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Varios 2" Binding="{Binding Varios2, UpdateSourceTrigger=PropertyChanged}" />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Varios 3" Binding="{Binding Varios3, UpdateSourceTrigger=PropertyChanged}" />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Varios 4" Binding="{Binding Varios4, UpdateSourceTrigger=PropertyChanged}" />
+                    <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Varios 5" Binding="{Binding Varios5, UpdateSourceTrigger=PropertyChanged}" />-->
+
+                </dxg:GridControl.Columns>
+
+                <dxg:GridControl.View>
+                    <dxg:TableView AllowConditionalFormattingMenu="true" >
+                        <dxg:TableView.FormatConditions>
+                            <dxg:DataBarFormatCondition FieldName="Porcentaje" PredefinedFormatName="GreenGradientDataBar"/>
+                        </dxg:TableView.FormatConditions>
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Border>
+    </DockPanel>
+</UserControl>
+

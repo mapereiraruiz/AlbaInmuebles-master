@@ -1,0 +1,614 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Alba_Logo.ico</ApplicationIcon>
+    <UseWindowsForms>true</UseWindowsForms>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DevExpress.WindowsDesktop.RichEdit.Core.es" Version="20.1.3" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Wpf" Version="20.1.3" />
+    <PackageReference Include="devexpress.windowsdesktop.wpf.grid.es" Version="20.1.3" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Wpf.Themes.All" Version="20.1.3" />
+    <PackageReference Include="EPPlus" Version="4.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <PackageReference Include="WpfRichText" Version="1.0.16.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CFAInmuebles.Domain\CFAInmuebles.Domain.csproj" />
+    <ProjectReference Include="..\CFAInmuebles.Infrastructure.Data\CFAInmuebles.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Styles\" />
+    <Folder Include="Vistas\Mantenimientos\Obras\" />
+    <Folder Include="Vistas\Mantenimientos\TipoInstalacion\" />
+    <Folder Include="Vistas\Mantenimientos\Licencias\" />
+    <Folder Include="Vistas\Mantenimientos\Tareas\" />
+    <Folder Include="Vistas\Mantenimientos\TipoLicencia\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Vistas\Informes\FacturacionAnual\HomeFacturacionAnual.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Informes\FacturacionAnual\MantenimientoFacturacionAnual.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Informes\FacturacionDetallada\HomeFacturacionDetallada.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Informes\FacturacionDetallada\MantenimientoFacuracionDetallada.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Articulos\AltaArticulos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Articulos\AltaArticuloObras.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Articulos\ArticuloHistorialOcupacion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Articulos\ArticuloIncidencias.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Articulos\ArticuloTareas.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Articulos\ArticuloFacturas.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Articulos\ArticuloObras.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Articulos\DeleteArticulos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Articulos\ArticuloHistorico.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Articulos\FichaArticulos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Articulos\HomeArticulos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Articulos\MantenimientoArticulos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Clientes\AltaClientes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Clientes\ClienteCuentaFinanzas.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Clientes\FichaClientes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Clientes\HomeClientes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Clientes\MantenimientoClientes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\AltaContratoCliente.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\AltaContratoClienteDatosFacturacion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\AltaContratoClienteAvalFianza.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\AltaContratoClienteIdentificacion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\ContratoClienteContactos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\ContratoClienteAvalFianza.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\ContratoClienteHistorialOcupacion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\ContratoClienteObras.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\ContratoClienteArticulos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\ContratoClienteDatosImprimir.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\ContratoClientePeriodosBaja.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\ContratoClienteIncidencias.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\ContratoClienteTareas.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\DeleteContratoCliente.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\ContratoClienteHistorico.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\FichaContratoCliente.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\HomeContratoCliente.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\ContratoCliente.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\ContratoClienteFacturas.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosClientes\MantenimientoContratoCliente.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosProveedores\AltaContratoProveedor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosProveedores\ContratoProveedorHistorico.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosProveedores\ContratoProveedorTareas.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosProveedores\ContratoProveedorIncidencias.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosProveedores\DeleteContratoProveedor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosProveedores\FichaContratoProveedor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosProveedores\HomeContratoProveedor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\ContratosProveedores\MantenimientoContratoProveedor.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Empresas\EmpresaHistorico.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleVentasParciales.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Operaciones\Seguros\ImportarSeguros.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Operaciones\Seguros\FichaSeguros.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Operaciones\Seguros\HomeSeguros.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Operaciones\Seguros\MantenimientoSeguros.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Procesos\Facturacion\HomeFacturacion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Procesos\Facturacion\MantenimientoFacturacion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Mantenimientos\Gastos\AltaGastos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Mantenimientos\Gastos\DeleteGastos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Mantenimientos\Gastos\FichaGastos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Mantenimientos\Gastos\MantenimientoGastos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\AltaInmuebleLicencias.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\AltaInmuebleReferenciaCatastral.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\AltaInmuebleObras.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\AltaInmuebles.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\AltaInmueblesDatosWeb.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\AltaInmueblesArchivoDigital.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\AltaInmueblesAdministracion.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\AltaInmueblesJuridico.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\DeleteInmuebles.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleHistorico.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleCentrosCoste.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleContactos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleMantenimientoNormativo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleMantenimientoPreventivo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleHistoricoTasaciones.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleHistoricoSeguros.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleLicencias.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleReferenciaCatastral.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleContratosClientes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleContratosProveedores.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleIncidencias.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleTareas.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleArticulos.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Maestros\Inmuebles\InmuebleObras.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vistas\Mantenimientos\TipoIPC\DesvincularContratosTipoIPC.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Vistas\Informes\FacturacionAnual\HomeFacturacionAnual.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Informes\FacturacionAnual\MantenimientoFacturacionAnual.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Informes\FacturacionDetallada\HomeFacturacionDetallada.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Informes\FacturacionDetallada\MantenimientoFacuracionDetallada.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\AltaArticulos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\AltaArticuloObras.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\ArticuloHistorialOcupacion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\ArticuloIncidencias.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\ArticuloTareas.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\ArticuloFacturas.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\ArticuloObras.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\DeleteArticulos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\ArticuloHistorico.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\FichaArticulos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\FichaArticuloHistorico.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\FichaArticuloFacturacion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\HomeArticulos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Articulos\MantenimientoArticulos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Clientes\AltaClientes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Clientes\ClienteCuentaFinanzas.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Clientes\FichaClientes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Clientes\HomeClientes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Clientes\MantenimientoClientes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\AltaDatosImprimirContratoCliente.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\AltaPeriodoBajaContratoCliente.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\AltaContactoContratoCliente.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\AltaContratoCliente.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\AltaContratoClienteDatosFacturacion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\AltaContratoClienteAvalFianza.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\AltaContratoClienteIdentificacion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\ContratoClienteContactos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\ContratoClienteAvalFianza.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\ContratoClienteHistorialOcupacion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\ContratoClienteObras.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\ContratoClienteArticulos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\ContratoClienteDatosImprimir.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\ContratoClientePeriodosBaja.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\ContratoClienteIncidencias.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\ContratoClienteTareas.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\DeleteContactoContratoCliente.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\DeleteContratoCliente.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\ContratoClienteHistorico.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\FichaContratoCliente.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\FichaContratoClienteHistorico.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\FichaContratoClienteFacturacion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\HomeContratoCliente.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\ContratoCliente.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\ContratoClienteFacturas.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosClientes\MantenimientoContratoCliente.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosProveedores\AltaContratoProveedor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosProveedores\ContratoProveedorHistorico.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosProveedores\ContratoProveedorTareas.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosProveedores\ContratoProveedorIncidencias.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosProveedores\DeleteContratoProveedor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosProveedores\FichaContratoProveedorHistorico.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosProveedores\FichaContratoProveedor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosProveedores\HomeContratoProveedor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\ContratosProveedores\MantenimientoContratoProveedor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Empresas\EmpresaHistorico.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Empresas\FichaEmpresaFacturacion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\AltaVentaParcialInmueble.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleVentasParciales.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Operaciones\Seguros\ImportarSeguros.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Operaciones\Seguros\FichaSeguros.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Operaciones\Seguros\HomeSeguros.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Operaciones\Seguros\MantenimientoSeguros.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Procesos\Facturacion\HomeFacturacion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Procesos\Facturacion\MantenimientoFacturacion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Mantenimientos\Gastos\AltaGastos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Mantenimientos\Gastos\DeleteGastos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Mantenimientos\Gastos\FichaGastos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Mantenimientos\Gastos\MantenimientoGastos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\AltaInmuebleLicencias.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\AltaInmuebleReferenciaCatastral.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\AltaInmuebleObras.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\AltaInmuebles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\AltaInmueblesDatosWeb.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\AltaInmueblesArchivoDigital.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\AltaInmueblesAdministracion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\AltaInmueblesJuridico.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\DeleteInmuebles.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleHistorico.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\FichaInmuebleHistorico.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleCentrosCoste.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleContactos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleMantenimientoNormativo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleMantenimientoPreventivo.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleHistoricoTasaciones.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleHistoricoSeguros.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleLicencias.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleReferenciaCatastral.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleContratosClientes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleContratosProveedores.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleIncidencias.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleTareas.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleArticulos.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Inmuebles\InmuebleObras.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Informes\ListadoBajas\HomeListadoBajas.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Informes\ListadoBajas\MantenimientoListadoBajas.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Maestros\Proveedores\FichaProveedorFacturacion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vistas\Mantenimientos\TipoIPC\DesvincularContratosTipoIPC.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+
+</Project>

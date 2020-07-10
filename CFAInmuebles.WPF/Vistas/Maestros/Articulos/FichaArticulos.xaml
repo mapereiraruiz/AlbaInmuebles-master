@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.FichaArticulos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             mc:Ignorable="d" 
+             Template="{StaticResource UserControlMaestroVM}"
+             Style="{StaticResource CustomStyleUserControl}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources >
+        <DataTemplate DataType="{x:Type local:AltaArticulosVM}" >
+            <local:AltaArticulos />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ArticuloHistorialOcupacionVM}" >
+            <local:ArticuloHistorialOcupacion />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ArticuloIncidenciasVM}" >
+            <local:ArticuloIncidencias />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ArticuloTareasVM}" >
+            <local:ArticuloTareas />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ArticuloFacturasVM}" >
+            <local:ArticuloFacturas />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ArticuloObrasVM}" >
+            <local:ArticuloObras />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaArticuloObrasVM}" >
+            <local:AltaArticuloObras />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ArticuloHistoricoVM}" >
+            <local:ArticuloHistorico />
+        </DataTemplate>
+
+    </UserControl.Resources>
+    
+    <DockPanel Margin="20">
+        <Menu DockPanel.Dock="Top" HorizontalAlignment="Left" Padding="3" Style="{StaticResource menuItemMaestro}"   >
+            <MenuItem Header="Identificación"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding AltaArticulos}" Margin="2,5"/>
+
+            <MenuItem Header="Historial de Ocupación"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ArticuloHistorialOcupacion}" Margin="2,5"/>
+
+            <MenuItem Header="Incidencias dal Artículo"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ArticuloIncidencias}" Margin="2,5"/>
+
+            <MenuItem Header="Tareas del Artículo"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ArticuloTareas}" Margin="2,5"/>
+
+            <MenuItem Header="Facturas"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ArticuloFacturas}" Margin="2,5"/>
+
+            <MenuItem Header="Obras"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ArticuloObras}" Margin="2,5"/>
+
+            <MenuItem Header="Histórico Modificaciones"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ArticuloHistorico}" Margin="2,5"/>
+
+        </Menu>
+
+        <ContentControl  Margin="5" Content="{Binding Path=CurrentPageViewModel}" />
+
+    </DockPanel>
+</UserControl>

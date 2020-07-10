@@ -1,0 +1,108 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.AltaPreventivoNormativo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             Style="{StaticResource CustomStyleUserControl}"
+             d:DesignHeight="600" d:DesignWidth="800">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}" 
+                                   CommandParameter="{Binding Mantenimientos}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0" x:Name="Contenido">
+
+            <Label Canvas.Top="50" Content="Tipo Fichero" Style="{StaticResource CustomLabelMaestros}" />
+            <ComboBox Canvas.Top="50" Canvas.Left="220" Style="{StaticResource UserControlComboBox}" 
+                      ItemsSource="{Binding TipoFicheros}"  SelectedItem="{Binding UpdateSourceTrigger=PropertyChanged, 
+                      Path=TipoFichero,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" IsEditable="True" IsReadOnly="True"  Width="350" />
+
+
+            <Label Canvas.Top="90" Content="Fichero" Style="{StaticResource CustomLabelMaestros}" />
+            <ComboBox Canvas.Top="90" Canvas.Left="220" Style="{StaticResource UserControlComboBox}" 
+                      ItemsSource="{Binding IdFicheroValues}"  SelectedItem="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=IdFicheroValue,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" IsEditable="True" IsReadOnly="True"  Width="350" />
+
+
+            <Label Canvas.Top="130" Content="Proveedor" Style="{StaticResource CustomLabelMaestros}" />
+            <ComboBox Canvas.Top="130" Canvas.Left="220" Style="{StaticResource UserControlComboBox}" 
+			            x:Name="txtProveedor" ItemsSource="{Binding ContratosProveedores}" SelectedItem="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=ContratoProveedor,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"
+			            IsEditable="True" IsReadOnly="True"  Width="350" />
+
+            <Label Canvas.Top="170" Content="Tipo Instalación" Style="{StaticResource CustomLabelMaestros}" />
+            <ComboBox Canvas.Top="170" Canvas.Left="220" Style="{StaticResource UserControlComboBox}" 
+			            x:Name="txtTipoInstalacion" ItemsSource="{Binding TipoInstalaciones}" SelectedItem="{Binding TipoInstalacion}"  
+			            IsEditable="True" IsReadOnly="True"  Width="350" />
+
+            <Label Canvas.Top="210" Content="Contrato Proveedor" Style="{StaticResource CustomLabelMaestros}" />
+            <ComboBox Canvas.Top="210" Canvas.Left="220" Style="{StaticResource UserControlComboBox}" 
+			            x:Name="txtContratosProveedores" ItemsSource="{Binding ContratosProveedores}" SelectedItem="{Binding ContratoProveedor}"  
+			            IsEditable="True" IsReadOnly="True"  Width="350" />
+
+            <Label Canvas.Top="250" Content="Tipo Mantenimiento" Style="{StaticResource CustomLabelMaestros}" />
+            <ComboBox Canvas.Top="250" Canvas.Left="220" Style="{StaticResource UserControlComboBox}" 
+                      ItemsSource="{Binding TipoMantenimientos}"  SelectedItem="{Binding UpdateSourceTrigger=PropertyChanged, 
+                      Path=TipoMantenimiento,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" IsEditable="True" IsReadOnly="True"  Width="350" />
+
+
+            <Label Canvas.Top="290" Content="Servicio" Style="{StaticResource CustomLabelMaestros}" />
+            <TextBox Canvas.Top="290" Canvas.Left="220" Style="{StaticResource UserControlText}" TextWrapping="Wrap" 
+		                Text="{Binding Servicio, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxServicio}" Width="350"/>
+
+            <Label Canvas.Top="330" Content="Fecha Servicio" Style="{StaticResource CustomLabelMaestros}" />
+            <DatePicker Canvas.Top="330" Canvas.Left="220"  Style="{StaticResource UserControlDatePicker}"  
+			            SelectedDate="{Binding FechaServicio, UpdateSourceTrigger=PropertyChanged}" Width="350"/>
+
+            <Label Canvas.Top="370" Content="Periodicidad Servicio" Style="{StaticResource CustomLabelMaestros}" />
+            <ComboBox Canvas.Top="370" Canvas.Left="220" Style="{StaticResource UserControlComboBox}" 
+			            x:Name="txtPeriodicidadServicio" ItemsSource="{Binding PeriodicidadesServicios}" SelectedItem="{Binding PeriodicidadServicio}"  
+			            IsEditable="True" IsReadOnly="True"  Width="350" />
+
+            <Label Canvas.Top="410" Content="Norma" Style="{StaticResource CustomLabelMaestros}" />
+            <ComboBox Canvas.Top="410" Canvas.Left="220" Style="{StaticResource UserControlComboBox}" 
+			            x:Name="txtNormas" ItemsSource="{Binding Normas}" SelectedItem="{Binding Norma}"  
+			            IsEditable="True" IsReadOnly="True"  Width="350" />
+
+            <Label Canvas.Top="450" Content="Medidas Correctoras" Style="{StaticResource CustomLabelMaestros}" />
+            <CheckBox Canvas.Top="445" Canvas.Left="215" Style="{StaticResource UserControlCheckBox}" IsChecked="{Binding MedidasCorrectoras, UpdateSourceTrigger=PropertyChanged,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" Width="50" >
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="1.75" ScaleY="1.75" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+
+
+
+            <UniformGrid  Canvas.Top="510" Canvas.Left="220"  Rows="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <Button  x:Name="btnvolver"  Style="{StaticResource StackPanelPadding}" Content="Volver al Listado"    
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.VolverCommand}" />
+                <Button x:Name="btncrear" Style="{StaticResource StackPanelPadding}" Content="Guardar"   
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" />
+                <Button x:Name="btneliminar" Visibility="{Binding MostrarBotones}"  Style="{StaticResource StackPanelPadding}" Content="Eliminar"    
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.DeleteCommand}" />
+            </UniformGrid>
+
+            <Grid x:Name="pnlMessage" Canvas.Top="560" Visibility="{Binding MostrarMensajes}" Width="{Binding ActualWidth, ElementName=Contenido, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Background="Transparent" Style="{StaticResource ErrorText}" Grid.Column="0" BorderThickness="0" Text="{Binding Mensaje, Mode=OneWay}"  IsReadOnly="True" TextWrapping="Wrap" IsTabStop="False"/>
+                <Button Grid.Column="1" x:Name="btnCerrarMensajes" Content="Cerrar" HorizontalAlignment="Stretch"  Style="{StaticResource ButtonMensaje}" 
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.CerrarMensajes}"></Button>
+            </Grid>
+
+
+        </Canvas>
+    </Grid>
+</UserControl>

@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.MantenimientoConceptoFacturacion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             mc:Ignorable="d"
+             Template="{StaticResource UserControlMantenimientoVM}"
+             Style="{StaticResource CustomStyleUserControl}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}"  />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="50*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Row="0" Margin="20" x:Name="Contenido">
+            <Label Canvas.Top="10" x:Name="lblBusqueda" Style="{StaticResource CustomLabelMaestros}" Content="Búsqueda de Concepto de Facturación"  />
+            <Label Canvas.Top="50" x:Name="lblConcepto"  Content="Concepto Facturación:"  VerticalAlignment="Top"/>
+            <TextBox Canvas.Top="50" Canvas.Left="200" Style="{StaticResource UserControlText}" x:Name="txtConcepto" TextWrapping="Wrap" Text="{Binding Conceptofacturacion1, UpdateSourceTrigger=PropertyChanged}" Width="350">
+                <TextBox.InputBindings>
+                    <KeyBinding  Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.SearchCommand}" Key="Enter"/>
+                </TextBox.InputBindings>
+            </TextBox>
+
+            <Label Canvas.Top="90" x:Name="lblTipoIVA"  Content="Tipo IVA:"  VerticalAlignment="Top"/>
+            <ComboBox Canvas.Top="90" Canvas.Left="200" Text="Seleccione:" Style="{StaticResource UserControlComboBox}" x:Name="txtTipoIVA" ItemsSource="{Binding TipoIvas}"  SelectedItem="{Binding TipoIva}" 
+                                     IsEditable="True" IsReadOnly="True"  Width="350" />
+           
+            <Label Canvas.Top="130" x:Name="lblRevisableipc"  Content="Revisable Ipc:"  VerticalAlignment="Top"/>
+            <CheckBox Canvas.Top="130" Canvas.Left="200" Style="{StaticResource UserControlCheckBox}" IsChecked="{Binding RevisableIpc}" >
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="1.75" ScaleY="1.75" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+
+            <Label Canvas.Top="170" x:Name="lblCatalogarConcepto"  Content="Catalogar Concepto:"  VerticalAlignment="Top"/>
+            <ComboBox Canvas.Top="170" Canvas.Left="200" Text="Seleccione:" Style="{StaticResource UserControlComboBox}" x:Name="txtCatalogarConcepto" ItemsSource="{Binding CatalogarConceptos}"  SelectedItem="{Binding CatalogarConcepto}" 
+                                     IsEditable="True" IsReadOnly="True"  Width="350" />
+
+
+        </Canvas>
+
+        <UniformGrid  Grid.Row="1" Margin="0,0,15,0" Rows="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button  Grid.Row="0" x:Name="btncrear" Style="{StaticResource StackPanelPadding}" Content="Alta Concepto de Facturación"   
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" />
+            <Button Grid.Row="1" x:Name="btnBurcar"  Style="{StaticResource StackPanelPadding}" Content="Buscar"    
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.SearchCommand}" />
+        </UniformGrid>
+
+        <DockPanel Grid.Row="2">
+            <Border  DockPanel.Dock="Top"  Style="{StaticResource gridBorderMantenimiento}" Margin="20"  Height="Auto">
+
+                <dxg:GridControl  DockPanel.Dock="Top" ItemsSource="{Binding ConceptosFacturacion}" SelectedItem="{Binding Path=SelectedItem}" >
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" CommandParameter="{Binding SelectedItem}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}"  Header="Empresa" Binding="{Binding IdEmpresaNavigation.Empresa, UpdateSourceTrigger=PropertyChanged}" Width="12*" />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Concepto de Facturación"  Binding="{Binding Conceptofacturacion1,  UpdateSourceTrigger=PropertyChanged}" Width="12*"/>
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}"  Header="IVA" Binding="{Binding IdTipoIvaNavigation, UpdateSourceTrigger=PropertyChanged}" Width="5*" />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}"  Header="Tipo Concepto" Binding="{Binding IdTipoConceptoNavigation.Valor, UpdateSourceTrigger=PropertyChanged}" Width="10*" />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Catalogar Concepto" Binding="{Binding IdCatalogarConceptoNavigation.Valor, UpdateSourceTrigger=PropertyChanged}" Width="10*" />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Cuenta Contable" Binding="{Binding CuentaContable, UpdateSourceTrigger=PropertyChanged}" Width="10*" />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Cuenta Gasto" Binding="{Binding CuentaGasto, UpdateSourceTrigger=PropertyChanged}" Width="10*" />
+                    </dxg:GridControl.Columns>
+                </dxg:GridControl>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>
+

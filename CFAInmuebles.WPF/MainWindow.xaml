@@ -1,0 +1,118 @@
+﻿<Window x:Class="CFAInmuebles.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation"
+        xmlns:local="clr-namespace:CFAInmuebles.WPF"
+        dx:ThemeManager.ThemeName="Office2013"
+        mc:Ignorable="d"
+        Title="{Binding Titulo}" Height="740" Width="1200"  ResizeMode="CanMinimize">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:IncidenciasyTareasVM}" >
+            <local:IncidenciasyTareas />
+        </DataTemplate>
+    </Window.Resources>
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="#036169"  >
+            <dxnav:TileBar VerticalAlignment="Top" Background="White" Padding="0,0,0,12">
+                <dxnav:TileBarItem TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Business_Presentation.svg'}"  VerticalTileGlyphAlignment="Top" Padding="5"  FontWeight="Bold" Content="Maestros" Background="{StaticResource BrushMaestros}"  FlyoutContent="{Binding Path=.}">
+                    <dxnav:TileBarItem.FlyoutContentTemplate>
+                        <DataTemplate>
+                            <dxnav:TileBar Visibility="{Binding PermisosBloque1}" x:Name="customTileBar" Height="70" Padding="0" Background="{StaticResource BrushMaestros}" ItemContainerStyle="{StaticResource SecondLevelTileItemStyle}" >
+                                <dxnav:TileBarItem Content="Empresas" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeEmpresas}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left"  TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Business_Bank.svg'}" Cursor="Hand" />
+                                <dxnav:TileBarItem Content="Clientes" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeClientes}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Business_Businessman.svg'}" Cursor="Hand"/>
+                                <dxnav:TileBarItem Content="Inmuebles" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeInmuebles}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Travel_Hotel.svg'}" Cursor="Hand" />
+                                <dxnav:TileBarItem Content="Contrato&#x0a;Cliente" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeContratoCliente}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Business_Briefcase.svg'}" Cursor="Hand"/>
+                                <dxnav:TileBarItem Content="Proveedores" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeProveedores}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Travel_Walk.svg'}" Cursor="Hand" />
+                                <dxnav:TileBarItem Content="Contrato&#x0a;Proveedor" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeContratoProveedor}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Actions_List.svg'}" Cursor="Hand"/>
+                                <dxnav:TileBarItem Content="Tareas&#x0a;Periódicas" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeTareaPeriodica}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Electronics_Mouse.svg'}" Cursor="Hand"/>
+                                <dxnav:TileBarItem Content="Incidencias" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeIncidencias}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Security_Stop.svg'}" Cursor="Hand"/>
+                                <dxnav:TileBarItem Content="Artículos" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeArticulos}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Shopping_ShoppingCart.svg'}" Cursor="Hand"/>
+                            </dxnav:TileBar>
+                        </DataTemplate>
+                    </dxnav:TileBarItem.FlyoutContentTemplate>
+                </dxnav:TileBarItem>
+                <dxnav:TileBarItem TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Business_Target.svg'}" VerticalTileGlyphAlignment="Top" Padding="5" Content="Mantenimiento"  FontWeight="Bold" Background="{StaticResource BrushMantenimientos}"  FlyoutContent="{Binding Path=.}">
+                    <dxnav:TileBarItem.FlyoutContentTemplate>
+                        <DataTemplate>
+                            <dxnav:TileBar x:Name="customTileBar"  Visibility="{Binding PermisosBloque2}"  Height="70" Padding="0" Background="{StaticResource BrushMantenimientos}" ItemContainerStyle="{StaticResource SecondLevelTileItemStyle}" >
+                                <dxnav:TileBarItem Content="Tipo IPC" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeTipoIPC}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left"  TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Shopping_Percent.svg'}" Cursor="Hand" />
+                                <dxnav:TileBarItem Content="Provincias" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeProvincias}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Travel_Mountains.svg'}" Cursor="Hand" />
+                                <dxnav:TileBarItem Content="Concepto&#x0a;Facturación" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeConceptoFacturacion}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/RichEdit/InsertTableOfEquations.svg'}" Cursor="Hand" />
+                                <dxnav:TileBarItem Content="Formas&#x0a;de Pago" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeFormasDePago}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Format/StrikeoutDouble.svg'}" Cursor="Hand"/>
+                                <dxnav:TileBarItem Content="Tipo&#x0a;Artículo" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeTipoArticulo}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Shopping_Sales.svg'}" Cursor="Hand"/>
+                                <dxnav:TileBarItem Content="Gastos" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeGastos}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Business Objects/BO_List.svg'}" Cursor="Hand"/>
+                                <dxnav:TileBarItem Content="Tipo IVA" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeTipoIVA}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Spreadsheet/Fraction.svg'}" Cursor="Hand"/>
+                                <dxnav:TileBarItem Content="Swift" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeSwift}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Security_PersonalID.svg'}" Cursor="Hand"/>
+                                <dxnav:TileBarItem Content="Normativas" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeNormativas}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/XAF/ModelEditor_KeyProperty.svg'}" Cursor="Hand"/>
+                                <dxnav:TileBarItem Content="Tareas" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeTarea}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Outlook Inspired/AlignLeft.svg'}" Cursor="Hand" />
+                                <dxnav:TileBarItem Content="Licencias" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeLicencia}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left"  TileGlyph="{dx:DXImage 'SvgImages/Outlook Inspired/Copy.svg'}" Cursor="Hand" />
+                                <dxnav:TileBarItem Content="Tipo&#x0a;Licencia" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeTipoLicencia}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Business Objects/BO_List.svg'}" Cursor="Hand" />
+                                <dxnav:TileBarItem Content="Tipo&#x0a;Instalación" VerticalTileGlyphAlignment="Top"  Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeTipoInstalacion}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Outlook Inspired/OfficeSlim.svg'}" Cursor="Hand" />
+                                <dxnav:TileBarItem Content="   Preventivos&#x0a;y Normativos" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomePreventivoNormativo}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Outlook Inspired/ArrowBearRight.svg'}" Cursor="Hand" />
+                                <dxnav:TileBarItem Content="Obras" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeObra}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Weather_Fog.svg'}" Cursor="Hand" />
+                            </dxnav:TileBar>
+                        </DataTemplate>
+                    </dxnav:TileBarItem.FlyoutContentTemplate>
+                </dxnav:TileBarItem>
+                <dxnav:TileBarItem TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Electronics_Keyboard.svg'}"  VerticalTileGlyphAlignment="Top" Padding="5"  Content="Operaciones"  FontWeight="Bold" Background="{StaticResource BrushOperaciones}"  FlyoutContent="{Binding Path=.}">
+                    <dxnav:TileBarItem.FlyoutContentTemplate>
+                        <DataTemplate>
+                            <dxnav:TileBar Visibility="{Binding PermisosBloque3}" x:Name="customTileBar" Height="70" Padding="0" Background="{StaticResource BrushOperaciones}" ItemContainerStyle="{StaticResource SecondLevelTileItemStyle}" >
+                                <dxnav:TileBarItem Content="Seguros" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeSeguros}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left"  TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Business_Briefcase.svg'}" Cursor="Hand" />
+                            </dxnav:TileBar>
+                        </DataTemplate>
+                    </dxnav:TileBarItem.FlyoutContentTemplate>
+                </dxnav:TileBarItem>
+                <dxnav:TileBarItem TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Electronics_LaptopWindows.svg'}"  VerticalTileGlyphAlignment="Top" Padding="5"  FontWeight="Bold" Content="Procesos" Background="{StaticResource BrushProcesos}"  FlyoutContent="{Binding Path=.}">
+                    <dxnav:TileBarItem.FlyoutContentTemplate>
+                        <DataTemplate>
+                            <dxnav:TileBar Visibility="{Binding PermisosBloque4}" x:Name="customTileBar" Height="70" Padding="0" Background="{StaticResource BrushProcesos}" ItemContainerStyle="{StaticResource SecondLevelTileItemStyle}" >
+                                <dxnav:TileBarItem Content="Faturación" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeFacturacion}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left"  TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Business_Briefcase.svg'}" Cursor="Hand" />
+                            </dxnav:TileBar>
+                        </DataTemplate>
+                    </dxnav:TileBarItem.FlyoutContentTemplate>
+                </dxnav:TileBarItem>
+                <dxnav:TileBarItem TileGlyph="{dx:DXImage 'SvgImages/Icon Builder/Electronics_Printer.svg'}"  VerticalTileGlyphAlignment="Top" Padding="5"  FontWeight="Bold" Content="Informes" Background="{StaticResource BrushInformes}"  FlyoutContent="{Binding Path=.}">
+                    <dxnav:TileBarItem.FlyoutContentTemplate>
+                        <DataTemplate>
+                            <dxnav:TileBar x:Name="customTileBar"  Visibility="{Binding PermisosBloque5}"  Height="70" Padding="0" Background="{StaticResource BrushInformes}" ItemContainerStyle="{StaticResource LevelInformeStyle}"  >
+
+                                <dxnav:TileBarItem Content="Generales" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeTipoIPC}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left"  TileGlyph="{dx:DXImage 'SvgImages/Export/ExportToXLSX.svg'}" Cursor="Hand" />
+                                <dxnav:TileBarItem Content="Inventarios" VerticalTileGlyphAlignment="Top" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Export/ExportToXLSX.svg'}" Cursor="Hand" FlyoutContent="{Binding Path=.}" >
+                                    <dxnav:TileBarItem.FlyoutContentTemplate>
+                                        <DataTemplate>
+                                            <dxnav:TileBar x:Name="customTileBar"  Visibility="{Binding PermisosBloque5}"  Height="70" Padding="0" Background="{StaticResource BrushInformesInventario}" ItemContainerStyle="{StaticResource SecondLevelTileItemStyle}" >
+                                                <dxnav:TileBarItem Content="Listado Altas" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeListadoAltas}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left"  TileGlyph="{dx:DXImage 'SvgImages/Print/Print.svg'}" Cursor="Hand" />
+                                                <dxnav:TileBarItem Content="Listado Bajas" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeListadoBajas}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Print/Print.svg'}" Cursor="Hand" />
+                                            </dxnav:TileBar>
+                                        </DataTemplate>
+                                    </dxnav:TileBarItem.FlyoutContentTemplate>
+                                </dxnav:TileBarItem>
+                                <dxnav:TileBarItem Content="Facturación" VerticalTileGlyphAlignment="Top" VerticalContentAlignment="Bottom"  HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Export/ExportToXLSX.svg'}" Cursor="Hand" FlyoutContent="{Binding Path=.}" >
+                                   
+                                    <dxnav:TileBarItem.FlyoutContentTemplate>
+                                        <DataTemplate>
+                                            <dxnav:TileBar  x:Name="customTileBar"  Visibility="{Binding PermisosBloque5}"  Height="70" Padding="0" Background="{StaticResource BrushInformesInventario}" ItemContainerStyle="{StaticResource SecondLevelTileItemStyle}" >
+                                                <dxnav:TileBarItem Content="Detallada" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeFacturacionDetallada}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Print/Print.svg'}" Cursor="Hand"/>
+                                                <dxnav:TileBarItem Content="Anual" VerticalTileGlyphAlignment="Top" Command="{Binding DataContext.OpenWindowCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" CommandParameter="{Binding HomeFacturacionAnual}" HorizontalContentAlignment="Right" HorizontalTileGlyphAlignment="Left" TileGlyph="{dx:DXImage 'SvgImages/Print/Print.svg'}" Cursor="Hand"/>
+                                            </dxnav:TileBar>
+                                        </DataTemplate>
+                                    </dxnav:TileBarItem.FlyoutContentTemplate>
+                                </dxnav:TileBarItem>
+                            </dxnav:TileBar>
+                        </DataTemplate>
+                    </dxnav:TileBarItem.FlyoutContentTemplate>
+                </dxnav:TileBarItem>
+
+               
+
+             </dxnav:TileBar>
+        </Border>
+        <Border Padding="10,20,10,10">
+            <ContentControl Margin="0" Content="{Binding Path=CurrentPageViewModel}" />
+        </Border>
+    </DockPanel>
+</Window>

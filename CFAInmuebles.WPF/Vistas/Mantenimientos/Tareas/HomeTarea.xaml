@@ -1,0 +1,29 @@
+﻿<Window x:Class="CFAInmuebles.WPF.HomeTarea"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+             dx:ThemeManager.ThemeName="Office2013"        
+             mc:Ignorable="d" 
+             Title="{Binding Titulo}"
+             Height="740" Width="1200" >
+    
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type local:MantenimientoTareaVM}" >
+            <local:MantenimientoTarea/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:FichaTareaVM}" >
+            <local:FichaTarea />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:DeleteTareaVM}" >
+            <local:DeleteTarea />
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <Border Padding="15">
+            <ContentControl  Content="{Binding Path=CurrentPageViewModel}" />
+        </Border>
+    </Grid>
+</Window>

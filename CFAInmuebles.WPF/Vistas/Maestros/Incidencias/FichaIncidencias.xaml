@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.FichaIncidencias"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             mc:Ignorable="d" 
+             Template="{StaticResource UserControlMaestroVM}"
+
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources >
+        <DataTemplate DataType="{x:Type local:AltaIncidenciasVM}" >
+            <local:AltaIncidencias />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:IncidenciaInmueblesVM}" >
+            <local:IncidenciaInmuebles />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:IncidenciaEmpresasVM}" >
+            <local:IncidenciaEmpresas />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:IncidenciaContratosClientesVM}" >
+            <local:IncidenciaContratosClientes />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:IncidenciaContratosProveedoresVM}" >
+            <local:IncidenciaContratosProveedores />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:IncidenciaArticulosVM}" >
+            <local:IncidenciaArticulos />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:IncidenciaObrasVM}" >
+            <local:IncidenciaObras />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:IncidenciaTareasVM}" >
+            <local:IncidenciaTareas />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:IncidenciaMantenimientoPreventivoVM}" >
+            <local:IncidenciaMantenimientoPreventivo />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:IncidenciaMantenimientoNormativoVM}" >
+            <local:IncidenciaMantenimientoNormativo />
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <DockPanel Margin="20">
+        <Menu DockPanel.Dock="Top" HorizontalAlignment="Left" Padding="3" Style="{StaticResource menuItemMaestro}"   >
+            <MenuItem Header="Identificación"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding AltaIncidencias}" Margin="2,5"/>
+
+
+            <MenuItem Header="Tareas"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding IncidenciaTareas}" Margin="2,5"/>            
+        </Menu>
+
+        <ContentControl  Margin="5" Content="{Binding Path=CurrentPageViewModel}" />
+
+    </DockPanel>
+</UserControl>

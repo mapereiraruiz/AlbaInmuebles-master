@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.AltaContratoClienteAvalFianza"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"            
+             mc:Ignorable="d"      
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"></RowDefinition>
+            <RowDefinition Height="60*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Row="0" Margin="0" x:Name="Contenido">
+            <Label Canvas.Top="20" Content="Importe Aval" Style="{StaticResource CustomLabelMaestros}" />
+            <TextBox Canvas.Top="20" Canvas.Left="180"   TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=ImporteAval,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" Width="250" />
+
+            <Label Canvas.Top="60" Content="Comentario Aval" Style="{StaticResource CustomLabelMaestros}" />
+            <TextBox Canvas.Top="60" Canvas.Left="180"   TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=Comentario}" MaxLength="{Binding MaxComentario}" Width="250" />
+
+            <Label Canvas.Top="100" Content="Fecha Vencimiento" Style="{StaticResource CustomLabelMaestros}" />
+            <DatePicker Canvas.Top="100" Canvas.Left="180"   Style="{StaticResource UserControlDatePicker}"  SelectedDate="{Binding UpdateSourceTrigger=PropertyChanged, Path=FechaVencimiento}"  Width="250"/>
+
+            <Label Canvas.Top="140"  Content="Cuenta Fianza:"  Style="{StaticResource CustomLabelMaestros}"  />
+            <TextBox Canvas.Top="140" Canvas.Left="180"   TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=CuentaFianza}" MaxLength="{Binding MaxCuentaFianza}" Width="250" />
+
+            <Label  Canvas.Top="180"   Style="{StaticResource CustomLabelMaestros}">Fianzas</Label>
+
+        </Canvas>
+        <Border  Grid.Row="1" DockPanel.Dock="Bottom"  Style="{StaticResource gridBorder}"  Height="Auto">
+            <dxg:GridControl DockPanel.Dock="Top" ItemsSource="{Binding Apuntes}" SelectedItem="{Binding Path=SelectedItem}" >
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Concepto Texto" Binding="{Binding ConceptoTexto}" MinWidth="250" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Asiento" Binding="{Binding Asiento}" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Apunte" Binding="{Binding Apunte}" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Subcuenta" Binding="{Binding Subcuenta}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Contrapartida" Binding="{Binding Contrapartida}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="EDebe" Binding="{Binding EDebe}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="EHaber" Binding="{Binding EHaber}"  />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha" Binding="{Binding Fecha}" EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}" />
+                </dxg:GridControl.Columns>
+            </dxg:GridControl>
+        </Border>
+
+    </Grid>
+</UserControl>

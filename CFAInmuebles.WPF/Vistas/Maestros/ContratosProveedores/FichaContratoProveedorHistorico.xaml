@@ -1,0 +1,105 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.FichaContratoProveedorHistorico"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             mc:Ignorable="d" 
+             Style="{StaticResource CustomStyleUserControl}"
+             d:DesignHeight="600" d:DesignWidth="800">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}" 
+                                   CommandParameter="{Binding Contactos}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5*"></RowDefinition>
+            <RowDefinition Height="95*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Style="{StaticResource CustomLabelMaestros}">Histórico Modificaciones</Label>
+        
+        <Canvas Grid.Row="1" x:Name="Contenido">
+
+            <Label Canvas.Top="20"   Content="Cliente"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="20" Canvas.Left="180"   TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding Path=Cliente}"  Width="250" />
+
+            <Label Canvas.Top="60"   Content="Inmueble"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="60" Canvas.Left="180"   TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding Path=Inmueble}"  Width="250" />
+            
+            <Label Canvas.Top="100" Content="Tipo Ipc" Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="100" Canvas.Left="180"   TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding Path=TipoIpc}"  Width="250" />
+
+            <Label Canvas.Top="140" Content="Fecha Alta" Style="{StaticResource CustomLabelFichas}" />
+            <DatePicker Canvas.Top="140" Canvas.Left="180"   Style="{StaticResource UserControlDatePicker}"  SelectedDate="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=FechaAlta, ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  Width="250"/>
+
+
+            <Label Canvas.Top="180"  Content="Cuenta Bancaria:"  Style="{StaticResource CustomLabelFichas}"  />
+            <TextBox Canvas.Top="180" Canvas.Left="180"   TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=CuentaBancaria,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" MaxLength="{Binding MaxCuentaBancaria}" Width="250" />
+
+            <Label Canvas.Top="220"   Content="Swift"  Style="{StaticResource CustomLabelFichas}" />
+            <ComboBox Canvas.Top="220" Canvas.Left="180" Style="{StaticResource UserControlComboBox}" ItemsSource="{Binding Swifts}"   SelectedItem="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=Swift,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" IsEditable="True" IsReadOnly="True"  Width="250" />
+
+            <Label Canvas.Top="260"  Content="Dirección de Envío:"  Style="{StaticResource CustomLabelFichas}"  />
+            <TextBox Canvas.Top="260" Canvas.Left="180"   TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=DireccionEnvio}" MaxLength="{Binding MaxDireccion}" Width="250" />
+
+            <Label Canvas.Top="300"   Content="Archivo Digital"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="300" Canvas.Left="180" Style="{StaticResource UserControlText}"  TextWrapping="Wrap" Text="{Binding ArchivoDigital, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxArchivoDigital}" Width="250" Height="68"/>
+
+            <Label Canvas.Top="340" Content="Forma de Pago" Style="{StaticResource CustomLabelFichas}" />
+            <ComboBox Canvas.Top="340" Canvas.Left="180" Style="{StaticResource UserControlComboBox}" ItemsSource="{Binding FormasDePago}"   SelectedItem="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=FormaDePago}" IsEditable="True" IsReadOnly="True"  Width="250" />
+
+            <Label Canvas.Top="380" Content="Fecha Inicio Facturación" Style="{StaticResource CustomLabelFichas}" />
+            <DatePicker Canvas.Top="380" Canvas.Left="180"   Style="{StaticResource UserControlDatePicker}"  SelectedDate="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=FechaInicioFacturacion,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  Width="250"/>
+
+            <Label Canvas.Top="420" Content="Fecha Última Facturación" Style="{StaticResource CustomLabelFichas}" />
+            <DatePicker Canvas.Top="420" Canvas.Left="180"   Style="{StaticResource UserControlDatePicker}"  SelectedDate="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=FechaUltimaFacturacion}"  Width="250"/>
+
+            <Label Canvas.Top="20" Canvas.Left="575" Content="Identificador Agrupación:"  Style="{StaticResource CustomLabelFichas}"  />
+            <TextBox Canvas.Top="20" Canvas.Left="775"   TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=AgruparContrato}" MaxLength="{Binding MaxAgruparContrato}" Width="250" />
+
+            <Label Canvas.Top="60" Canvas.Left="575" Content="Fecha Facturación" Style="{StaticResource CustomLabelFichas}" />
+            <DatePicker Canvas.Top="60" Canvas.Left="775"   Style="{StaticResource UserControlDatePicker}"  SelectedDate="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=FechaContrato,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  Width="250"/>
+
+            <Label Canvas.Top="100"  Canvas.Left="575" Content="Importe Aval" Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="100" Canvas.Left="775"   TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=ImporteAval,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" Width="250" />
+
+            <Label Canvas.Top="140"  Canvas.Left="575" Content="Comentario Aval" Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="140" Canvas.Left="775"   TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=Comentario}" MaxLength="{Binding MaxComentario}" Width="250" />
+
+            <Label Canvas.Top="180"  Canvas.Left="575" Content="Fecha Vencimiento" Style="{StaticResource CustomLabelFichas}" />
+            <DatePicker Canvas.Top="180" Canvas.Left="775"   Style="{StaticResource UserControlDatePicker}"  SelectedDate="{Binding UpdateSourceTrigger=PropertyChanged, Path=FechaVencimiento}"  Width="250"/>
+
+            <Label Canvas.Top="220"   Canvas.Left="575" Content="Cuenta Fianza:"  Style="{StaticResource CustomLabelFichas}"  />
+            <TextBox Canvas.Top="220" Canvas.Left="775"   TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=CuentaFianza}" MaxLength="{Binding MaxCuentaFianza}" Width="250" />
+
+
+            <UniformGrid  Canvas.Top="480" Canvas.Left="180"  Rows="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <Button  x:Name="btnvolver"  Style="{StaticResource StackPanelPadding}" Content="Volver al Listado"    
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.VolverCommand}" />
+            </UniformGrid>
+
+            <Grid x:Name="pnlMessage" Canvas.Top="500" Visibility="{Binding MostrarMensajes}" Width="{Binding ActualWidth, ElementName=Contenido, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Background="Transparent" Style="{StaticResource ErrorText}" Grid.Column="0" BorderThickness="0" Text="{Binding Mensaje, Mode=OneWay}"  IsReadOnly="True" TextWrapping="Wrap" IsTabStop="False"/>
+                <Button Grid.Column="1" x:Name="btnCerrarMensajes" Content="Cerrar" HorizontalAlignment="Stretch"  Style="{StaticResource ButtonMensaje}" 
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.CerrarMensajes}"></Button>
+            </Grid>
+
+        </Canvas>
+    </Grid>
+</UserControl>

@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.MantenimientoTipoArticulo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             Template="{StaticResource UserControlMantenimientoVM}"
+             Style="{StaticResource CustomStyleUserControl}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="55*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Canvas Grid.Row="0" Margin="20" x:Name="Contenido">
+            <Label Canvas.Top="10" x:Name="lblBusqueda" Style="{StaticResource CustomLabelMaestros}" Content="Búsqueda de Tipo Artículo"  />
+            
+            <Label Canvas.Top="50" x:Name="lblTipoArticulo"  Content="Tipo Articulo:"  VerticalAlignment="Top"/>
+            <TextBox Canvas.Top="50" Canvas.Left="130" Style="{StaticResource UserControlText}" x:Name="txtTipoArticulo" TextWrapping="Wrap" Text="{Binding TipoArticulo, UpdateSourceTrigger=PropertyChanged}" Width="350">
+                <TextBox.InputBindings>
+                    <KeyBinding  Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.SearchCommand}" Key="Enter"/>
+                </TextBox.InputBindings>
+            </TextBox>
+
+            <Label Canvas.Top="90" x:Name="lblTipoMedida"  Content="Tipo Medida:"  VerticalAlignment="Top"/>
+            <ComboBox Canvas.Top="90" Canvas.Left="130" Text="Seleccione:" Style="{StaticResource UserControlComboBox}" x:Name="txtTipoMedida" ItemsSource="{Binding TipoMedidas}"  SelectedItem="{Binding TipoMedida}" 
+                                     IsEditable="True" IsReadOnly="True"  Width="350" />
+
+            <Label Canvas.Top="130" x:Name="lblTipoConcepto"  Content="Tipo Concepto:"  VerticalAlignment="Top"/>
+            <ComboBox Canvas.Top="130" Canvas.Left="130"  Text="Seleccione:" Style="{StaticResource UserControlComboBox}" x:Name="txtTipoConcepto" ItemsSource="{Binding TipoConceptoArticulos}"  SelectedItem="{Binding TipoConceptoArticulo}" 
+                                     IsEditable="True" IsReadOnly="True"  Width="350" />
+
+            <Label Canvas.Top="170" x:Name="lblClasificacion"  Content="Clasificación:"  VerticalAlignment="Top"/>
+            <ComboBox Canvas.Top="170" Canvas.Left="130"  Text="Seleccione:" Style="{StaticResource UserControlComboBox}" x:Name="txtClasificacion" ItemsSource="{Binding Clasificaciones}"  SelectedItem="{Binding Clasificacion}" 
+                                     IsEditable="True" IsReadOnly="True"  Width="350" />
+
+            <Label Canvas.Top="210" x:Name="lblAlquilable"  Content="Alquilable:"  VerticalAlignment="Top"/>
+            <CheckBox Canvas.Top="210" Canvas.Left="130" Style="{StaticResource UserControlCheckBox}" IsChecked="{Binding Alquilable }" >
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="1.75" ScaleY="1.75" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+        </Canvas>
+        
+        <UniformGrid  Grid.Row="1" Margin="0,0,15,0" Rows="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button  Grid.Row="0" x:Name="btncrear" Style="{StaticResource StackPanelPadding}" Content="Alta Tipo Artículo"   
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" />
+            <Button Grid.Row="1" x:Name="btnBurcar"  Style="{StaticResource StackPanelPadding}" Content="Buscar"    
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.SearchCommand}" />
+        </UniformGrid>
+        
+        <DockPanel Grid.Row="2">
+            <Border  DockPanel.Dock="Top"  Style="{StaticResource gridBorderMantenimiento}" Margin="20"  Height="Auto">
+                <dxg:GridControl  DockPanel.Dock="Top"   ItemsSource="{Binding TipoArticulos}" SelectedItem="{Binding Path=SelectedItem}" >
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" CommandParameter="{Binding SelectedItem}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Descripción Artículo" Binding="{Binding Tipoarticulo, UpdateSourceTrigger=PropertyChanged}" Width="20*" />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Alquilable" Binding="{Binding Alquilable, UpdateSourceTrigger=PropertyChanged}" Width="10*" />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Coeficiente&#x0a;Homogeneización" Binding="{Binding CoeficienteHomogeneizacion, UpdateSourceTrigger=PropertyChanged}" Width="15*" />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Tipo Medida" Binding="{Binding IdTipoMedidaNavigation.Valor, UpdateSourceTrigger=PropertyChanged}" Width="20*"  />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Tipo Concepto" Binding="{Binding IdTipoConceptoArticuloNavigation.Valor, UpdateSourceTrigger=PropertyChanged}" Width="20*"/>
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Clasificación" Binding="{Binding IdClasificacionNavigation.Valor, UpdateSourceTrigger=PropertyChanged}" Width="15*"/>
+                    </dxg:GridControl.Columns>
+                </dxg:GridControl>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>

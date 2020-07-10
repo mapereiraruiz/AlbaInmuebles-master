@@ -1,0 +1,978 @@
+﻿<ResourceDictionary xmlns:dxnav="http://schemas.devexpress.com/winfx/2008/xaml/navigation"  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CFAInmuebles.WPF"
+                    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+                    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+                    xmlns:dxbt="http://schemas.devexpress.com/winfx/2008/xaml/bars/themekeys"                    
+                    xmlns:dxcn="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
+                    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+    <!--Colors-->
+    <Color x:Key="ColorFondoNav1">#7092BE</Color>
+    <Color x:Key="ColorFondoNav2">Green</Color>
+    <Color x:Key="ColorFontNav1">White</Color>
+    <Color x:Key="ColorFondoMenu">DarkGray</Color>
+    <Color x:Key="ColorFondoButton">#036169</Color>
+    <Color x:Key="ColorFondoButtonOver">#05A0AD</Color>
+ 
+    <Color x:Key="ColorHome">Gray</Color>
+    <Color x:Key="ColorMaestro">#FF00879C</Color>
+    <Color x:Key="ColorMantenimiento">#F13E44</Color>
+    <Color x:Key="ColorProceso">#01c8df</Color>
+    <Color x:Key="ColorInformes">#95cb9c</Color>
+    <Color x:Key="ColorInformesInventario">#217418</Color>
+    <Color x:Key="ColorOperaciones">#ffb256</Color>
+    
+
+    <!--Fuentes -->
+
+    <!--Fuente Botones -->
+    <FontFamily x:Key="FontFamilyButton">Segoe UI</FontFamily>
+    <system:Double x:Key="FontSizeButton">12</system:Double>
+
+
+    <!--Fuente Normal Controles de Usuario -->
+    <FontFamily x:Key="FontFamilyUserControl">Segoe UI</FontFamily>
+    <system:Double x:Key="FontSizeUserControl">14</system:Double>
+
+    <!--Fuente Pequeña de Controles de Usuario -->
+    <FontFamily x:Key="FontFamilyUserControlSmall">Segoe UI</FontFamily>
+    <system:Double x:Key="FontSizeUserControlSmall">12</system:Double>
+
+    <!--Brushes-->
+
+    <SolidColorBrush x:Key="BrushNav1" Color="{StaticResource ColorFondoNav1}"></SolidColorBrush>
+    <SolidColorBrush x:Key="BrushNav2" Color="{StaticResource ColorFondoNav2}"></SolidColorBrush>
+    <SolidColorBrush x:Key="BrushFontNav1" Color="{StaticResource ColorFontNav1}"></SolidColorBrush>
+    <SolidColorBrush x:Key="BrushFondoMenu" Color="{StaticResource ColorFondoMenu}"></SolidColorBrush>
+    <SolidColorBrush x:Key="BrushFondoButton" Color="{StaticResource ColorFondoButton}"></SolidColorBrush>
+    <SolidColorBrush x:Key="BrushFondoButtonOver" Color="{StaticResource ColorFondoButtonOver}"></SolidColorBrush>
+
+    <SolidColorBrush x:Key="BrushMaestros" Color="{StaticResource ColorMaestro}"></SolidColorBrush>
+    <SolidColorBrush x:Key="BrushMantenimientos" Color="{StaticResource ColorMantenimiento}"></SolidColorBrush>
+    <SolidColorBrush x:Key="BrushProcesos" Color="{StaticResource ColorProceso}"></SolidColorBrush>
+    <SolidColorBrush x:Key="BrushHome" Color="{StaticResource ColorHome}"></SolidColorBrush>
+    <SolidColorBrush x:Key="BrushInformes" Color="{StaticResource ColorInformes}"></SolidColorBrush>
+    <SolidColorBrush x:Key="BrushInformesInventario" Color="{StaticResource ColorInformesInventario}"></SolidColorBrush>
+    <SolidColorBrush x:Key="BrushOperaciones" Color="{StaticResource ColorOperaciones}"></SolidColorBrush>
+
+
+    <!--Estilo de los titulos de los VM de la home-->
+    <Style x:Key="titleBarTitleHome" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BrushHome}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    
+    <!--Estilo de los titulos de los VM de los maestros-->
+    <Style x:Key="titleBarTitleMaestros" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BrushMaestros}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <!--Estilo de los titulos de los VM de los mantenimientos-->
+    <Style x:Key="titleBarTitleMantenimientos" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BrushMantenimientos}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <!--Estilo de los titulos de los VM de los procesos-->
+    <Style x:Key="titleBarTitleProcesos" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BrushProcesos}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <!--Estilo de los titulos de los VM de los informes-->
+    <Style x:Key="titleBarTitleInformes" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BrushInformes}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <!--Estilo de los titulos de los VM de los informes-->
+    <Style x:Key="titleBarTitleOperaciones" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource BrushOperaciones}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+    
+
+    <!--Estilo de los botones del menú principal-->
+    <Style x:Key="StackPanelPadding" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource BrushFondoButton}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeButton}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilyButton}" />
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground"  Value="White" />
+                <Setter Property="Background" Value="{StaticResource BrushFondoButtonOver}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--Estilo de los botones de error-->
+    <Style x:Key="ButtonMensaje" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource BrushFondoButton}" />
+        <Setter Property="Foreground" Value="White" />
+        <Setter Property="FontSize" Value="{StaticResource FontSizeButton}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="FontFamily" Value="{StaticResource FontFamilyButton}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground"  Value="White" />
+                <Setter Property="Background" Value="{StaticResource BrushFondoButtonOver}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!--Estilo para los textbox de mensajes de error-->
+    <Style x:Key="ErrorText" TargetType="TextBox">
+        <Setter Property="Foreground" Value="Red"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <!--Estilo para los textbox de mensajes de error pequeños-->
+    <Style x:Key="ErrorTextSmall" TargetType="TextBox">
+        <Setter Property="Foreground" Value="Red"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="12"/>
+    </Style>
+
+
+    <!--Estilo para los label de obligatorio-->
+    <Style x:Key="Required" TargetType="Label">
+        <Setter Property="Foreground" Value="Red"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
+
+    <!--Estilo para los textblock de mensajes de error-->
+    <Style x:Key="ErrorTextBlock" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Red"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Margin" Value="5,0,0,0" />
+        <Setter Property="VerticalAlignment" Value="Center" />
+    </Style>
+
+    <!--Estilo para los textbox, datepicker,checkbox y combobox de los controles de usuario normales-->
+    <Style x:Key="UserControlText" TargetType="TextBox">
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeUserControl}" />
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel Grid.Column="2">
+                        <TextBlock Style="{StaticResource ErrorTextBlock }" Text="{Binding [0].ErrorContent}"  DockPanel.Dock="Right"></TextBlock>
+                        <AdornedElementPlaceholder>
+                            <Border BorderBrush="Red" BorderThickness="2"  />
+                        </AdornedElementPlaceholder>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="UserControlDatePicker" TargetType="DatePicker">
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeUserControl}" />
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel Grid.Column="2">
+                        <TextBlock Style="{StaticResource ErrorTextBlock }" Text="{Binding [0].ErrorContent}"  DockPanel.Dock="Right"></TextBlock>
+                        <AdornedElementPlaceholder>
+                            <Border BorderBrush="Red" BorderThickness="2"  />
+                        </AdornedElementPlaceholder>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+       </Style>
+
+    <Style x:Key="UserControlComboBox" TargetType="ComboBox">
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeUserControl}" />
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel Grid.Column="2">
+                        <TextBlock Style="{StaticResource ErrorTextBlock }" Text="{Binding [0].ErrorContent}"  DockPanel.Dock="Right"></TextBlock>
+                        <AdornedElementPlaceholder>
+                            <Border BorderBrush="Red" BorderThickness="2"  />
+                        </AdornedElementPlaceholder>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="UserControlCheckBox" TargetType="CheckBox">
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeUserControl}" />
+        <Setter Property="VerticalContentAlignment" Value="Top"></Setter>
+    </Style>
+
+    <!--Estilo para los textbox, datepicker,checkbox y combobox de los controles de usuario pequeños-->
+    <Style x:Key="UserControlTextSmall" TargetType="TextBox">
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeUserControlSmall}" />
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel Grid.Column="2">
+                        <TextBlock Style="{StaticResource ErrorTextBlock }" Text="{Binding [0].ErrorContent}"  DockPanel.Dock="Right"></TextBlock>
+                        <AdornedElementPlaceholder>
+                            <Border BorderBrush="Red" BorderThickness="2"  />
+                        </AdornedElementPlaceholder>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="UserControlDatePickerSmall" TargetType="DatePicker">
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeUserControlSmall}" />
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel Grid.Column="2">
+                        <TextBlock Style="{StaticResource ErrorTextBlock }" Text="{Binding [0].ErrorContent}"  DockPanel.Dock="Right"></TextBlock>
+                        <AdornedElementPlaceholder>
+                            <Border BorderBrush="Red" BorderThickness="2"  />
+                        </AdornedElementPlaceholder>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="UserControlComboBoxSmall" TargetType="ComboBox">
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeUserControlSmall}" />
+        <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        <Setter Property="Validation.ErrorTemplate">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel Grid.Column="2">
+                        <TextBlock Style="{StaticResource ErrorTextBlock }" Text="{Binding [0].ErrorContent}"  DockPanel.Dock="Right"></TextBlock>
+                        <AdornedElementPlaceholder>
+                            <Border BorderBrush="Red" BorderThickness="2"  />
+                        </AdornedElementPlaceholder>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="UserControlCheckBoxSmall" TargetType="CheckBox">
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="FontSize" Value="{StaticResource FontSizeUserControlSmall}" />
+        <Setter Property="VerticalContentAlignment" Value="Top"></Setter>
+    </Style>
+
+    <Style x:Key="CustomStyleUserControlMaestro" TargetType="{x:Type UserControl}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeUserControlSmall}" />
+    </Style>
+
+    <Style x:Key="CustomStyleUserControl" TargetType="{x:Type UserControl}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeUserControl}" />
+    </Style>
+
+    <!--Estilo para las etiquetas de los submenus de los maestros-->
+    <Style x:Key="CustomLabelMaestros" TargetType="{x:Type Label}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeUserControl}" />
+        <Setter Property="Foreground" Value="{StaticResource BrushFondoButton}" />
+        <Setter Property="FontWeight" Value="Bold" />
+    </Style>
+
+    <!--Sytle para los bordes de los TextBlock-->
+    <Style x:Key="customBorder" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="Black" />
+    </Style>
+
+    <!--Sytle para los bordes de los DataGrid-->
+    <Style x:Key="gridBorder" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="#036169" />
+    </Style>
+
+    <Style x:Key="gridBorderMantenimiento" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource BrushMantenimientos}" />
+    </Style>
+
+
+    <Style x:Key="gridBorderHome" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource BrushHome}" />
+    </Style>
+
+    <Style x:Key="gridBorderMaestros" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource BrushMaestros}" />
+    </Style>
+
+    <Style x:Key="gridBorderProcesos" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource BrushProcesos}" />
+    </Style>
+
+    <Style x:Key="gridBorderInformes" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource BrushInformes}" />
+    </Style>
+
+    <Style x:Key="gridBorderOperaciones" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource BrushOperaciones}" />
+    </Style>
+
+    <!--ControlTemplate para los bordes de los VM-->
+    <ControlTemplate x:Key="UserControlVM" TargetType="UserControl">
+        <DockPanel x:Name="root" LastChildFill="True">
+            <DockPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="BorderBrush"
+                                Value="{StaticResource BrushHome}" />
+                    <Setter Property="Width"
+                                Value="30" />
+                    <Setter Property="Height"
+                                Value="30" />
+                    <Setter Property="CornerRadius"
+                                Value="10" />
+                </Style>
+            </DockPanel.Resources>
+            <Grid DockPanel.Dock="Top" Height="20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="2,2,0,0" />
+                <Border BorderThickness="0,2,0,0"
+                            Grid.Column="2"
+                            Width="auto"
+                            CornerRadius="0" />
+                <Border BorderThickness="0,2,2,0"
+                            Grid.Column="3"
+                            HorizontalAlignment="Right" />
+                <TextBlock Text="{Binding DataContext.Name,  RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                               Style="{StaticResource titleBarTitleHome}"
+                               Grid.Column="1"
+                               Margin="10,-15"
+                               VerticalAlignment="Top" />
+            </Grid>
+            <Grid Height="20"
+                      DockPanel.Dock="Bottom">
+                <Border BorderThickness="2,0,2,2"
+                            Width="auto"
+                            VerticalAlignment="Bottom" />
+            </Grid>
+            <Border BorderThickness="2,0,0,0"
+                        DockPanel.Dock="Left"
+                        Height="auto"
+                        Width="20"
+                        CornerRadius="0" />
+            <Border BorderThickness="0,0,2,0"
+                        DockPanel.Dock="Right"
+                        Width="20"
+                        Height="auto"
+                        CornerRadius="0" />
+            <ContentPresenter Margin="-20" />
+
+
+        </DockPanel>
+    </ControlTemplate>
+
+    <!--ControlTemplate para los bordes de los VM de la home-->
+    <ControlTemplate x:Key="UserControlHomeVM" TargetType="UserControl">
+        <DockPanel x:Name="root" LastChildFill="True">
+            <DockPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="BorderBrush"
+                                Value="{StaticResource BrushHome}" />
+                    <Setter Property="Width"
+                                Value="30" />
+                    <Setter Property="Height"
+                                Value="30" />
+                    <Setter Property="CornerRadius"
+                                Value="10" />
+                </Style>
+            </DockPanel.Resources>
+            <Grid DockPanel.Dock="Top" Height="20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="2,2,0,0" />
+                <Border BorderThickness="0,2,0,0"
+                            Grid.Column="2"
+                            Width="auto"
+                            CornerRadius="0" />
+                <Border BorderThickness="0,2,2,0"
+                            Grid.Column="3"
+                            HorizontalAlignment="Right" />
+                <TextBlock Text="{Binding DataContext.Name,  RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                               Style="{StaticResource titleBarTitleHome}"
+                               Grid.Column="1"
+                               Margin="10,-15"
+                               VerticalAlignment="Top" />
+            </Grid>
+            <Grid Height="20"
+                      DockPanel.Dock="Bottom">
+                <Border BorderThickness="2,0,2,2"
+                            Width="auto"
+                            VerticalAlignment="Bottom" />
+            </Grid>
+            <Border BorderThickness="2,0,0,0"
+                        DockPanel.Dock="Left"
+                        Height="auto"
+                        Width="20"
+                        CornerRadius="0" />
+            <Border BorderThickness="0,0,2,0"
+                        DockPanel.Dock="Right"
+                        Width="20"
+                        Height="auto"
+                        CornerRadius="0" />
+            <ContentPresenter Margin="-20" />
+
+
+        </DockPanel>
+    </ControlTemplate>
+
+    <!--ControlTemplate para los bordes de los VM de los maestros-->
+    <ControlTemplate x:Key="UserControlMaestroVM" TargetType="UserControl">
+        <DockPanel x:Name="root" LastChildFill="True">
+            <DockPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="BorderBrush"
+                                Value="{StaticResource BrushMaestros}" />
+                    <Setter Property="Width"
+                                Value="30" />
+                    <Setter Property="Height"
+                                Value="30" />
+                    <Setter Property="CornerRadius"
+                                Value="10" />
+                </Style>
+            </DockPanel.Resources>
+            <Grid DockPanel.Dock="Top" Height="20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="2,2,0,0" />
+                <Border BorderThickness="0,2,0,0"
+                            Grid.Column="2"
+                            Width="auto"
+                            CornerRadius="0" />
+                <Border BorderThickness="0,2,2,0"
+                            Grid.Column="3"
+                            HorizontalAlignment="Right" />
+                <TextBlock Text="{Binding DataContext.Name,  RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                               Style="{StaticResource titleBarTitleMaestros}"
+                               Grid.Column="1"
+                               Margin="10,-15"
+                               VerticalAlignment="Top" />
+            </Grid>
+            <Grid Height="20"
+                      DockPanel.Dock="Bottom">
+                <Border BorderThickness="2,0,2,2"
+                            Width="auto"
+                            VerticalAlignment="Bottom" />
+            </Grid>
+            <Border BorderThickness="2,0,0,0"
+                        DockPanel.Dock="Left"
+                        Height="auto"
+                        Width="20"
+                        CornerRadius="0" />
+            <Border BorderThickness="0,0,2,0"
+                        DockPanel.Dock="Right"
+                        Width="20"
+                        Height="auto"
+                        CornerRadius="0" />
+            <ContentPresenter Margin="-20" />
+
+
+        </DockPanel>
+    </ControlTemplate>
+
+    <!--ControlTemplate para los bordes de los VM de los mantenimientos-->
+    <ControlTemplate x:Key="UserControlMantenimientoVM" TargetType="UserControl">
+        <DockPanel x:Name="root" LastChildFill="True">
+            <DockPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="BorderBrush"
+                                Value="{StaticResource BrushMantenimientos}" />
+                    <Setter Property="Width"
+                                Value="30" />
+                    <Setter Property="Height"
+                                Value="30" />
+                    <Setter Property="CornerRadius"
+                                Value="10" />
+                </Style>
+            </DockPanel.Resources>
+            <Grid DockPanel.Dock="Top" Height="20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="2,2,0,0" />
+                <Border BorderThickness="0,2,0,0"
+                            Grid.Column="2"
+                            Width="auto"
+                            CornerRadius="0" />
+                <Border BorderThickness="0,2,2,0"
+                            Grid.Column="3"
+                            HorizontalAlignment="Right" />
+                <TextBlock Text="{Binding DataContext.Name,  RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                               Style="{StaticResource titleBarTitleMantenimientos}"
+                               Grid.Column="1"
+                               Margin="10,-15"
+                               VerticalAlignment="Top" />
+            </Grid>
+            <Grid Height="20"
+                      DockPanel.Dock="Bottom">
+                <Border BorderThickness="2,0,2,2"
+                            Width="auto"
+                            VerticalAlignment="Bottom" />
+            </Grid>
+            <Border BorderThickness="2,0,0,0"
+                        DockPanel.Dock="Left"
+                        Height="auto"
+                        Width="20"
+                        CornerRadius="0" />
+            <Border BorderThickness="0,0,2,0"
+                        DockPanel.Dock="Right"
+                        Width="20"
+                        Height="auto"
+                        CornerRadius="0" />
+            <ContentPresenter Margin="-20" />
+
+
+        </DockPanel>
+    </ControlTemplate>
+
+    <!--ControlTemplate para los bordes de los VM de los procesos-->
+    <ControlTemplate x:Key="UserControlProcesoVM" TargetType="UserControl">
+        <DockPanel x:Name="root" LastChildFill="True">
+            <DockPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="BorderBrush"
+                                Value="{StaticResource BrushProcesos}" />
+                    <Setter Property="Width"
+                                Value="30" />
+                    <Setter Property="Height"
+                                Value="30" />
+                    <Setter Property="CornerRadius"
+                                Value="10" />
+                </Style>
+            </DockPanel.Resources>
+            <Grid DockPanel.Dock="Top" Height="20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="2,2,0,0" />
+                <Border BorderThickness="0,2,0,0"
+                            Grid.Column="2"
+                            Width="auto"
+                            CornerRadius="0" />
+                <Border BorderThickness="0,2,2,0"
+                            Grid.Column="3"
+                            HorizontalAlignment="Right" />
+                <TextBlock Text="{Binding DataContext.Name,  RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                               Style="{StaticResource titleBarTitleProcesos}"
+                               Grid.Column="1"
+                               Margin="10,-15"
+                               VerticalAlignment="Top" />
+            </Grid>
+            <Grid Height="20"
+                      DockPanel.Dock="Bottom">
+                <Border BorderThickness="2,0,2,2"
+                            Width="auto"
+                            VerticalAlignment="Bottom" />
+            </Grid>
+            <Border BorderThickness="2,0,0,0"
+                        DockPanel.Dock="Left"
+                        Height="auto"
+                        Width="20"
+                        CornerRadius="0" />
+            <Border BorderThickness="0,0,2,0"
+                        DockPanel.Dock="Right"
+                        Width="20"
+                        Height="auto"
+                        CornerRadius="0" />
+            <ContentPresenter Margin="-20" />
+
+
+        </DockPanel>
+    </ControlTemplate>
+
+    <!--ControlTemplate para los bordes de los VM de los informes-->
+    <ControlTemplate x:Key="UserControlInformeVM" TargetType="UserControl">
+        <DockPanel x:Name="root" LastChildFill="True">
+            <DockPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="BorderBrush"
+                                Value="{StaticResource BrushInformes}" />
+                    <Setter Property="Width"
+                                Value="30" />
+                    <Setter Property="Height"
+                                Value="30" />
+                    <Setter Property="CornerRadius"
+                                Value="10" />
+                </Style>
+            </DockPanel.Resources>
+            <Grid DockPanel.Dock="Top" Height="20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="2,2,0,0" />
+                <Border BorderThickness="0,2,0,0"
+                            Grid.Column="2"
+                            Width="auto"
+                            CornerRadius="0" />
+                <Border BorderThickness="0,2,2,0"
+                            Grid.Column="3"
+                            HorizontalAlignment="Right" />
+                <TextBlock Text="{Binding DataContext.Name,  RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                               Style="{StaticResource titleBarTitleInformes}"
+                               Grid.Column="1"
+                               Margin="10,-15"
+                               VerticalAlignment="Top" />
+            </Grid>
+            <Grid Height="20"
+                      DockPanel.Dock="Bottom">
+                <Border BorderThickness="2,0,2,2"
+                            Width="auto"
+                            VerticalAlignment="Bottom" />
+            </Grid>
+            <Border BorderThickness="2,0,0,0"
+                        DockPanel.Dock="Left"
+                        Height="auto"
+                        Width="20"
+                        CornerRadius="0" />
+            <Border BorderThickness="0,0,2,0"
+                        DockPanel.Dock="Right"
+                        Width="20"
+                        Height="auto"
+                        CornerRadius="0" />
+            <ContentPresenter Margin="-20" />
+
+
+        </DockPanel>
+    </ControlTemplate>
+
+    <!--ControlTemplate para los bordes de los VM de los informes-->
+    <ControlTemplate x:Key="UserControlOperacionesVM" TargetType="UserControl">
+        <DockPanel x:Name="root" LastChildFill="True">
+            <DockPanel.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="BorderBrush"
+                                Value="{StaticResource BrushOperaciones}" />
+                    <Setter Property="Width"
+                                Value="30" />
+                    <Setter Property="Height"
+                                Value="30" />
+                    <Setter Property="CornerRadius"
+                                Value="10" />
+                </Style>
+            </DockPanel.Resources>
+            <Grid DockPanel.Dock="Top" Height="20">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="20" />
+                </Grid.ColumnDefinitions>
+                <Border BorderThickness="2,2,0,0" />
+                <Border BorderThickness="0,2,0,0"
+                            Grid.Column="2"
+                            Width="auto"
+                            CornerRadius="0" />
+                <Border BorderThickness="0,2,2,0"
+                            Grid.Column="3"
+                            HorizontalAlignment="Right" />
+                <TextBlock Text="{Binding DataContext.Name,  RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                               Style="{StaticResource titleBarTitleOperaciones}"
+                               Grid.Column="1"
+                               Margin="10,-15"
+                               VerticalAlignment="Top" />
+            </Grid>
+            <Grid Height="20"
+                      DockPanel.Dock="Bottom">
+                <Border BorderThickness="2,0,2,2"
+                            Width="auto"
+                            VerticalAlignment="Bottom" />
+            </Grid>
+            <Border BorderThickness="2,0,0,0"
+                        DockPanel.Dock="Left"
+                        Height="auto"
+                        Width="20"
+                        CornerRadius="0" />
+            <Border BorderThickness="0,0,2,0"
+                        DockPanel.Dock="Right"
+                        Width="20"
+                        Height="auto"
+                        CornerRadius="0" />
+            <ContentPresenter Margin="-20" />
+
+
+        </DockPanel>
+    </ControlTemplate>
+
+    <!--Estilo para el menú general-->
+    <Style x:Key="menuItemHome" TargetType="Menu">
+        <Setter Property="TextBlock.FontSize" Value="16" />
+        <Setter Property="TextBlock.FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{StaticResource BrushFondoButton}" />
+    </Style>
+
+    <Style x:Key="menuItemHomeDev" TargetType="dxb:MainMenuControl">
+        <Setter Property="TextElement.FontSize" Value="18" />
+        <Setter Property="TextElement.Foreground" Value="{StaticResource BrushFontNav1}" />
+        <Setter Property="TextBlock.FontWeight" Value="Bold" />
+
+    </Style>
+
+    <!--Estilo para los menús de tablas maestras-->
+    <Style x:Key="menuItemMaestro" TargetType="Menu">
+        <Setter Property="TextBlock.FontSize" Value="12" />
+        <Setter Property="TextBlock.FontWeight" Value="Bold" />
+        <Setter Property="Foreground" Value="{StaticResource BrushFondoButton}" />
+    </Style>
+
+    <!--Estilo para las etiquetas de las fichas normal-->
+    <Style x:Key="CustomLabelFichas" TargetType="{x:Type Label}">
+        <Setter Property="FontSize" Value="{StaticResource FontSizeUserControlSmall}" />
+        <Setter Property="Foreground" Value="{StaticResource BrushFondoButton}" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+    </Style>
+
+
+    <dxb:FontSettings x:Key="{dxbt:BarItemFontThemeKey ResourceKey=BarItemFontSettingsInMenu, IsThemeIndependent=True}" Hover="White" Normal="LightSeaGreen" Pressed="LightSeaGreen" Weight="Bold" Size="14" />
+    <ControlTemplate x:Key="{dxbt:BarItemBorderInMenuThemeKey ResourceKey=Normal, IsThemeIndependent=True}" TargetType="{x:Type dxb:ItemBorderControl}">
+        <Grid x:Name="Root" SnapsToDevicePixels="True">
+            <Grid>
+                <Border x:Name="HoverState" Opacity="0">
+                    <Border x:Name="hover" Background="#a6cfd3" Opacity="0" />
+                </Border>
+                <Border x:Name="PressedState" Background="#7F2180C6" Opacity="0" />
+                <Border x:Name="CustomizationState" Background="#FFFFFFFF" BorderBrush="#FF0072C6" BorderThickness="1" Opacity="0" />
+            </Grid>
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="HideBorderSide">
+                    <VisualState x:Name="None" />
+                    <VisualState x:Name="Top">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames dxcn:ValueSetter.Thickness="0,0,0,1" Storyboard.TargetName="Root" Storyboard.TargetProperty="Margin" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Right">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames dxcn:ValueSetter.Thickness="0,0,1,0" Storyboard.TargetName="Root" Storyboard.TargetProperty="Margin" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Left">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames dxcn:ValueSetter.Thickness="0" Storyboard.TargetName="Root" Storyboard.TargetProperty="Margin" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Bottom">
+                        <Storyboard>
+                            <ObjectAnimationUsingKeyFrames dxcn:ValueSetter.Thickness="0" Storyboard.TargetName="Root" Storyboard.TargetProperty="Margin" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="All" />
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="ArrowHideBorderSide">
+                    <VisualState x:Name="ArrowNone" />
+                    <VisualState x:Name="ArrowLeft" />
+                    <VisualState x:Name="ArrowTop" />
+                    <VisualState x:Name="ArrowRight" />
+                    <VisualState x:Name="ArrowBottom" />
+                    <VisualState x:Name="ArrowAll" />
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="ActiveState">
+                    <VisualState x:Name="Active">
+                        <Storyboard>
+                            <DoubleAnimation Duration="0" Storyboard.TargetName="hover" Storyboard.TargetProperty="Opacity" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Inactive">
+                        <Storyboard>
+                            <DoubleAnimation Duration="0" Storyboard.TargetName="hover" Storyboard.TargetProperty="Opacity" To="0.5" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+                <VisualStateGroup x:Name="State">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="Hover">
+                        <Storyboard>
+                            <DoubleAnimation Duration="0" Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Duration="0" Storyboard.TargetName="PressedState" Storyboard.TargetProperty="Opacity" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Disabled" />
+                    <VisualState x:Name="Checked" />
+                    <VisualState x:Name="HoverChecked">
+                        <Storyboard>
+                            <DoubleAnimation Duration="0" Storyboard.TargetName="HoverState" Storyboard.TargetProperty="Opacity" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Indeterminate" />
+                    <VisualState x:Name="Focused" />
+                    <VisualState x:Name="Customization">
+                        <Storyboard>
+                            <DoubleAnimation Duration="0" Storyboard.TargetName="CustomizationState" Storyboard.TargetProperty="Opacity" To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
+        </Grid>
+    </ControlTemplate>
+
+
+    <Style x:Key="gridStyle" TargetType="{x:Type dxg:HeaderContentControl}">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="gridStyleMantenimiento" TargetType="{x:Type dxg:HeaderContentControl}">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="gridStyleMaestro" TargetType="{x:Type dxg:HeaderContentControl}">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="gridStyleProceso" TargetType="{x:Type dxg:HeaderContentControl}">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="gridStyleInforme" TargetType="{x:Type dxg:HeaderContentControl}">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style x:Key="gridStyleOperaciones" TargetType="{x:Type dxg:HeaderContentControl}">
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <!--<Style TargetType="dxg:GridColumnHeader">
+        <Setter Property="Background" Value="{StaticResource BrushMaestros}"/>
+    </Style>-->
+
+    <Style x:Key="gridColumnMantenimiento" TargetType="dxg:BaseGridHeader">
+        <Setter Property="Background" Value="{StaticResource BrushMantenimientos}"/>
+    </Style>
+
+    <Style x:Key="gridColumnMaestro" TargetType="dxg:BaseGridHeader">
+        <Setter Property="Background" Value="{StaticResource BrushMaestros}"/>
+    </Style>
+
+    <Style x:Key="gridColumnProceso" TargetType="dxg:BaseGridHeader">
+        <Setter Property="Background" Value="{StaticResource BrushProcesos}"/>
+    </Style>
+
+    <Style x:Key="gridColumnInforme" TargetType="dxg:BaseGridHeader">
+        <Setter Property="Background" Value="{StaticResource BrushInformes}"/>
+    </Style>
+
+    <Style x:Key="gridColumnOperaciones" TargetType="dxg:BaseGridHeader">
+        <Setter Property="Background" Value="{StaticResource BrushOperaciones}"/>
+    </Style>
+
+    <Style x:Key="SecondLevelTileItemStyle" TargetType="{x:Type dxnav:TileBarItem}">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Height" Value="55"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Width" Value="118"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+    <Style x:Key="LevelInformeStyle" TargetType="{x:Type dxnav:TileBarItem}">
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Height" Value="55"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Width" Value="160"/>
+        <Setter Property="Margin" Value="0"/>
+    </Style>
+
+
+</ResourceDictionary>

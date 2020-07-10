@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.AltaInmuebles"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"           
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Row="0" Margin="0" x:Name="Contenido">
+
+            <Label Canvas.Top="20"   Content="Empresa"  Style="{StaticResource CustomLabelFichas}" />
+            <ComboBox Canvas.Top="20" Canvas.Left="180" Style="{StaticResource UserControlComboBoxSmall}" ItemsSource="{Binding Empresas}"   SelectedItem="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=Empresa,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" IsEditable="True" IsReadOnly="True"  Width="250" />
+
+            <Label Canvas.Top="60" Content="Inmueble" Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="60" Canvas.Left="180" Style="{StaticResource UserControlTextSmall}"  TextWrapping="Wrap" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=Inmueble,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" MaxLength="{Binding MaxInmueble}" Width="250"/>
+
+            <Label Canvas.Top="100"   Content="Calle" Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="100" Canvas.Left="180" Style="{StaticResource UserControlTextSmall}"  TextWrapping="Wrap" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=Calle,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" MaxLength="{Binding MaxCalle}" Width="250"/>
+
+            <Label Canvas.Top="140"   Content="Municipio" Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="140" Canvas.Left="180" Style="{StaticResource UserControlTextSmall}"  TextWrapping="Wrap" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=Municipio,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" MaxLength="{Binding MaxMunicipio}" Width="250"/>
+
+            <Label Canvas.Top="180" Content="Código Postal" Style="{StaticResource CustomLabelFichas}" />
+            <TextBox  x:Name="txtCodigoPostal" Canvas.Top="180" Canvas.Left="180"  TextWrapping="Wrap"  VerticalAlignment="Top"  Style="{StaticResource UserControlText}" Text="{Binding CodigoPostal, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxCodigoPostal}" Width="250" />
+
+            <Label Canvas.Top="220"   Content="Tipo Inmueble" Style="{StaticResource CustomLabelFichas}" />
+            <ComboBox Canvas.Top="220" Canvas.Left="180" Style="{StaticResource UserControlComboBoxSmall}" ItemsSource="{Binding TipoInmuebles}"  SelectedItem="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=TipoInmueble,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" IsEditable="True" IsReadOnly="True"  Width="250" />
+
+            <Label Canvas.Top="260"   Content="Provincia" Style="{StaticResource CustomLabelFichas}" />
+            <ComboBox Canvas.Top="260" Canvas.Left="180" Style="{StaticResource UserControlComboBoxSmall}" ItemsSource="{Binding Provincias}" SelectedItem="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=Provincia,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}" IsEditable="True" IsReadOnly="True"  Width="250" />
+
+            <Label Canvas.Top="300"   Content="Referencia Catastral Principal" Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="300" Canvas.Left="180" Style="{StaticResource UserControlTextSmall}"  TextWrapping="Wrap" Text="{Binding ReferenciaCatastralGeneral, UpdateSourceTrigger=PropertyChanged}" MaxLength="{Binding MaxReferenciaCatastralPrincipal}" Width="250"/>
+
+            <Label Canvas.Top="340"   Content="Superficie Parcela" Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="340" Canvas.Left="180" Style="{StaticResource UserControlTextSmall}" Text="{Binding UpdateSourceTrigger=PropertyChanged, 
+                                     Path=SuperficieParcela,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  TextWrapping="Wrap" Width="250" />
+
+            <Label Canvas.Top="380"  Content="De Uso Propio" Style="{StaticResource CustomLabelFichas}"/>
+            <CheckBox Canvas.Top="376" Canvas.Left="180" Style="{StaticResource UserControlCheckBoxSmall}" IsChecked="{Binding UsoPropio}"   >
+                <CheckBox.LayoutTransform>
+                    <ScaleTransform ScaleX="1.75" ScaleY="1.75" />
+                </CheckBox.LayoutTransform>
+            </CheckBox>
+
+            <Label Canvas.Top="20"  Canvas.Left="575"  Content="Superficie registral-Sobre rasante"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="20" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}"  Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=SuperficieRegistralS,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  TextWrapping="Wrap" Width="250" />
+
+            <Label Canvas.Top="60"  Canvas.Left="575"  Content="Superficie registral-Bajo rasante"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="60" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=SuperficieRegistralB,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"   TextWrapping="Wrap" Width="250" />
+
+            <Label Canvas.Top="100"  Canvas.Left="575"  Content="Superficie registral-Número Plazas"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="100" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}"  Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=NumPlazaRegistral,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  TextWrapping="Wrap" Width="250" />
+
+            <Label Canvas.Top="140"  Canvas.Left="575"  Content="Superficie catastral-Bajo rasante"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="140" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=SuperficieCatastralB,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  TextWrapping="Wrap" Width="250" />
+
+
+            <Label Canvas.Top="180"  Canvas.Left="575"  Content="Superficie catastral-Sobre rasante"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="180" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=SuperficieCatastralS,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  TextWrapping="Wrap" Width="250" />
+          
+
+
+            <Label Canvas.Top="220"  Canvas.Left="575"  Content="Superficie catastral-Número Plazas"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="220" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=NumPlazaCatastral,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  TextWrapping="Wrap" Width="250" />
+
+            <Label Canvas.Top="260"  Canvas.Left="575"  Content="Superficie ALBA-Sobre rasante"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="260" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=SuperficieAlbaS,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  TextWrapping="Wrap" Width="250" />
+
+            <Label Canvas.Top="300"  Canvas.Left="575"  Content="Superficie ALBA-Bajo rasante"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="300" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}" Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=SuperficieAlbaB,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  TextWrapping="Wrap" Width="250" />
+
+
+            <Label Canvas.Top="340"  Canvas.Left="575"  Content="Superficie ALBA-Número Plazas"  Style="{StaticResource CustomLabelFichas}" />
+            <TextBox Canvas.Top="340" Canvas.Left="775" Style="{StaticResource UserControlTextSmall}"  Text="{Binding UpdateSourceTrigger=PropertyChanged,  Path=NumPlazaAlba,  ValidatesOnDataErrors=true,  NotifyOnValidationError=true}"  TextWrapping="Wrap" Width="250" />
+
+
+            <UniformGrid  Canvas.Top="436" Canvas.Left="180"  Rows="1" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <Button  x:Name="btnvolver"  Style="{StaticResource StackPanelPadding}" Content="Volver al Listado"    
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.VolverCommand}" />
+                <Button x:Name="btncrear" Style="{StaticResource StackPanelPadding}" Content="Guardar"   
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" />
+                <Button x:Name="btneliminar" Visibility="{Binding MostrarBotones}"  Style="{StaticResource StackPanelPadding}" Content="Eliminar"    
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.DeleteCommand}"  CommandParameter="{Binding TipoIpc}" />
+            </UniformGrid>
+
+            <Grid x:Name="pnlMessage" Canvas.Top="480" Visibility="{Binding MostrarMensajes}" Width="{Binding ActualWidth, ElementName=Contenido, Mode=OneWay}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80*"></ColumnDefinition>
+                    <ColumnDefinition Width="10*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBox Background="Transparent" Style="{StaticResource ErrorTextSmall}" Grid.Column="0" BorderThickness="0" Text="{Binding Mensaje, Mode=OneWay}"  IsReadOnly="True" TextWrapping="Wrap" IsTabStop="False"/>
+                <Button Grid.Column="1" x:Name="btnCerrarMensajes" Content="Cerrar" HorizontalAlignment="Stretch"  Style="{StaticResource ButtonMensaje}" 
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.CerrarMensajes}"></Button>
+            </Grid>
+        </Canvas>
+
+    </Grid>
+</UserControl>

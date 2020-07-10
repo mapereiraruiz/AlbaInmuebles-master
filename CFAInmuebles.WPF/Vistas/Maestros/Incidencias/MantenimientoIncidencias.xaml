@@ -1,0 +1,82 @@
+﻿<UserControl xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"  x:Class="CFAInmuebles.WPF.MantenimientoIncidencias"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Template="{StaticResource UserControlMaestroVM}"
+             Style="{StaticResource CustomStyleUserControl}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}"  />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="70*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Row="0" Margin="20" x:Name="Contenido">
+            <Label Canvas.Top="10" x:Name="lblBusqueda" Style="{StaticResource CustomLabelMaestros}" Content="Búsqueda de Incidencia"  />
+            
+            <Label Canvas.Top="50" x:Name="lblIncidencia"  Content="Incidencia:"  VerticalAlignment="Top"/>
+            <TextBox Canvas.Top="50" Canvas.Left="130" Style="{StaticResource UserControlText}" x:Name="txtIncidencia" TextWrapping="Wrap" 
+                     Text="{Binding Incidencia, UpdateSourceTrigger=PropertyChanged}" Width="350">
+                <TextBox.InputBindings>
+                    <KeyBinding  Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.SearchCommand}" Key="Enter"/>
+                </TextBox.InputBindings>
+            </TextBox>
+
+
+            <Label Canvas.Top="90" x:Name="lblTipoFichero"  Content="Tipo Fichero:"  VerticalAlignment="Top"/>
+            <ComboBox Canvas.Top="90" Canvas.Left="130" Text="Seleccione:" Style="{StaticResource UserControlComboBox}" 
+                      x:Name="txtTipoFichero" ItemsSource="{Binding TipoFicheros}"  SelectedItem="{Binding TipoFichero}" 
+                                     IsEditable="True" IsReadOnly="True"  Width="350" />
+
+            <Label Canvas.Top="130" x:Name="lblFechaIncidencia"  Content="Fecha Incidencia:"  VerticalAlignment="Top"/>
+            <DatePicker Canvas.Top="130" Canvas.Left="130"  Style="{StaticResource UserControlDatePicker}"  
+                        SelectedDate="{Binding FechaIncidencia, UpdateSourceTrigger=PropertyChanged}"  Width="350"/>
+        </Canvas>
+
+        <UniformGrid  Grid.Row="1" Margin="0,0,15,0" Rows="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <dx:SimpleButton Grid.Row="0" x:Name="btncrear" Style="{StaticResource StackPanelPadding}" Content="Alta Incidencia"   
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" />
+            <Button Grid.Row="1" x:Name="btnBurcar"  Style="{StaticResource StackPanelPadding}" Content="Buscar"    
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.SearchCommand}" />
+        </UniformGrid>
+
+        <DockPanel Grid.Row="2">
+            <Border  DockPanel.Dock="Top"  Style="{StaticResource gridBorder}" Margin="20"  Height="Auto">
+                <dxg:GridControl  DockPanel.Dock="Top"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"  
+                                  ItemsSource="{Binding Incidencias}" SelectedItem="{Binding Path=SelectedItem}" >
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, 
+                                Path=DataContext.ModifyCommand}" CommandParameter="{Binding SelectedItem}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Incidencia" Binding="{Binding Incidencia, UpdateSourceTrigger=PropertyChanged}" MinWidth="200"/>
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Fecha Incidencia" Binding="{Binding FechaIncidencia, UpdateSourceTrigger=PropertyChanged}" EditSettings="{dxe:TextSettings DisplayFormat=dd-MM-yyyy}"  />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Descripción Fichero" Binding="{Binding TipoIncidenciaDescripcion, UpdateSourceTrigger=PropertyChanged}" MinWidth="300"/>
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Proveedor" Binding="{Binding IdContratoProveedorNavigation.NombreProveedor, UpdateSourceTrigger=PropertyChanged}"  MinWidth="300"/>
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Descripción" Binding="{Binding Descripcion, UpdateSourceTrigger=PropertyChanged}"  />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Servicio" Binding="{Binding Servicio, UpdateSourceTrigger=PropertyChanged}"  />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}" Header="Finalizada" Binding="{Binding Finalizada, UpdateSourceTrigger=PropertyChanged}" />
+
+                    </dxg:GridControl.Columns>
+                </dxg:GridControl>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>

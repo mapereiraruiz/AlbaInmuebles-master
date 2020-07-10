@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.MantenimientoTarea"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+           
+             mc:Ignorable="d"
+             d:DesignHeight="450" d:DesignWidth="800"
+             Template="{StaticResource UserControlMantenimientoVM}"
+             Style="{StaticResource CustomStyleUserControl}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}"  />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="70*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Row="0" Margin="20" x:Name="Contenido">
+            <Label Canvas.Top="10" x:Name="lblBusqueda" Style="{StaticResource CustomLabelMaestros}" Content="Búsqueda de Tarea"  />
+            
+            <Label Canvas.Top="50" x:Name="lblTarea"  Content="Tarea:"  VerticalAlignment="Top"/>
+            <TextBox Canvas.Top="50" Canvas.Left="90" Style="{StaticResource UserControlText}" x:Name="Tarea" TextWrapping="Wrap" 
+                     Text="{Binding Tarea, UpdateSourceTrigger=PropertyChanged}" Width="350">
+                <TextBox.InputBindings>
+                    <KeyBinding  Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.SearchCommand}" Key="Enter"/>
+                </TextBox.InputBindings>
+            </TextBox>
+
+
+            <Label Canvas.Top="90" x:Name="lblTipoFichero"  Content="Tipo Fichero:"  VerticalAlignment="Top"/>
+            <ComboBox Canvas.Top="90" Canvas.Left="90" Text="Seleccione:" Style="{StaticResource UserControlComboBox}" 
+                      x:Name="txtTipoFichero" ItemsSource="{Binding TipoFicheros}"  SelectedItem="{Binding TipoFichero}" 
+                                     IsEditable="True" IsReadOnly="True"  Width="350" />
+
+        </Canvas>
+
+        <UniformGrid  Grid.Row="1" Margin="0,0,15,0" Rows="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button  Grid.Row="0" x:Name="btncrear" Style="{StaticResource StackPanelPadding}" Content="Alta Tarea"   
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" />
+            
+            <Button Grid.Row="1" x:Name="btnBurcar"  Style="{StaticResource StackPanelPadding}" Content="Buscar"    
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.SearchCommand}" />
+        </UniformGrid>
+
+        <DockPanel Grid.Row="2">
+            <Border  DockPanel.Dock="Top"  Style="{StaticResource gridBorderMantenimiento}" Margin="20"  Height="Auto">
+                <dxg:GridControl    DockPanel.Dock="Top" 
+                                    ItemsSource="{Binding Tareas}" SelectedItem="{Binding Path=SelectedItem}" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" 
+                                                   CommandParameter="{Binding SelectedItem}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Tarea" 
+                                        Binding="{Binding Tarea, UpdateSourceTrigger=PropertyChanged}" Width="30*" />
+
+                        <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Tipo Fichero" 
+                                        Binding="{Binding IdTipoFicheroNavigation.Valor, UpdateSourceTrigger=PropertyChanged}" Width="20*"  />
+
+                        <dxg:GridColumn  HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Descripcion" 
+                                         Binding="{Binding Descripcion,  UpdateSourceTrigger=PropertyChanged}" Width="30*" />
+                    </dxg:GridControl.Columns>
+                </dxg:GridControl>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>

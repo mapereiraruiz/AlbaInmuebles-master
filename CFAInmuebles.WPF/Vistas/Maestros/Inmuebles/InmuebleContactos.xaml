@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.InmuebleContactos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             mc:Ignorable="d" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <DockPanel>
+        <Label DockPanel.Dock="Top" Style="{StaticResource CustomLabelMaestros}">Contactos</Label>
+        <UniformGrid DockPanel.Dock="Top" Margin="0,0,0,0" Rows="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button  Grid.Row="0" x:Name="btncrear" Style="{StaticResource StackPanelPadding}" Content="Alta de Contacto"   
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" />
+        </UniformGrid>
+
+        <Border  DockPanel.Dock="Top"  Style="{StaticResource gridBorder}"  Height="Auto">
+            <dxg:GridControl  DockPanel.Dock="Top"  ItemsSource="{Binding Contactos}" SelectedItem="{Binding Path=SelectedItem}"  >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" CommandParameter="{Binding SelectedItem}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}"  Header="Contacto" Binding="{Binding Contacto, UpdateSourceTrigger=PropertyChanged}" Width="20*" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}"  Header="Nif" Binding="{Binding Nif, UpdateSourceTrigger=PropertyChanged}" Width="10*" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}"  Header="Télefono 1" Binding="{Binding Telefono1,  UpdateSourceTrigger=PropertyChanged}" Width="20*" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}"  Header="Teléfono 2" Binding="{Binding Telefono2, UpdateSourceTrigger=PropertyChanged}" Width="20*" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}"  Header="Mail" Binding="{Binding Mail, UpdateSourceTrigger=PropertyChanged}" Width="20*" />
+                    <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMaestro}" ColumnHeaderContentStyle="{StaticResource gridStyleMaestro}"  Header="Mailing 1" Binding="{Binding Mailing1, UpdateSourceTrigger=PropertyChanged}" Width="10*" />
+                </dxg:GridControl.Columns>
+            </dxg:GridControl>
+        </Border>
+
+    </DockPanel>
+</UserControl>
+

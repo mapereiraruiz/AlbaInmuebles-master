@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.MantenimientoTipoIVA"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"  
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             Template="{StaticResource UserControlMantenimientoVM}"
+             Style="{StaticResource CustomStyleUserControl}">
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.LoadCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"></RowDefinition>
+            <RowDefinition Height="15*"></RowDefinition>
+            <RowDefinition Height="65*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Canvas Grid.Row="0" Margin="20" x:Name="Contenido">
+            <Label Canvas.Top="10" x:Name="lblBusqueda" Style="{StaticResource CustomLabelMaestros}" Content="Búsqueda de Tipo IVA"  />
+
+            <Label Canvas.Top="50" x:Name="lblTipoIva"  Content="Tipo IVA:"  VerticalAlignment="Top"/>
+            <TextBox Canvas.Top="50" Canvas.Left="130" Style="{StaticResource UserControlText}" x:Name="txtTipoIva" TextWrapping="Wrap" Text="{Binding TipoIva1, UpdateSourceTrigger=PropertyChanged}" Width="350">
+                <TextBox.InputBindings>
+                    <KeyBinding  Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.SearchCommand}" Key="Enter"/>
+                </TextBox.InputBindings>
+            </TextBox>
+
+            <Label Canvas.Top="90" x:Name="lblCuentaContable"  Content="Cuenta Contable:"  VerticalAlignment="Top"/>
+            <TextBox Canvas.Top="90" Canvas.Left="130" Style="{StaticResource UserControlText}" x:Name="txtCuentaContable" TextWrapping="Wrap" Text="{Binding CuentaContable, UpdateSourceTrigger=PropertyChanged}" Width="350">
+                <TextBox.InputBindings>
+                    <KeyBinding  Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.SearchCommand}" Key="Enter"/>
+                </TextBox.InputBindings>
+            </TextBox>
+
+            <Label Canvas.Top="130" x:Name="lblIVA"  Content="IVA:"  VerticalAlignment="Top"/>
+            <TextBox Canvas.Top="130" Canvas.Left="130" Style="{StaticResource UserControlText}" x:Name="txtIva" TextWrapping="Wrap" Text="{Binding IvaS, UpdateSourceTrigger=PropertyChanged}" Width="350">
+                <TextBox.InputBindings>
+                    <KeyBinding  Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.SearchCommand}" Key="Enter"/>
+                </TextBox.InputBindings>
+            </TextBox>
+        </Canvas>
+
+        <UniformGrid  Grid.Row="1" Margin="0,0,15,0" Rows="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button  Grid.Row="0" x:Name="btncrear" Style="{StaticResource StackPanelPadding}" Content="Alta Tipo IVA"   
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" />
+            <Button Grid.Row="1" x:Name="btnBurcar"  Style="{StaticResource StackPanelPadding}" Content="Buscar"    
+                Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.SearchCommand}" />
+        </UniformGrid>
+
+        <DockPanel Grid.Row="2">
+            <Border  DockPanel.Dock="Top"  Style="{StaticResource gridBorderMantenimiento}" Margin="20"  Height="Auto">
+                <dxg:GridControl   DockPanel.Dock="Top"  ItemsSource="{Binding TipoIvas}" SelectedItem="{Binding Path=SelectedItem}" >
+
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="MouseDoubleClick">
+                            <i:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, Path=DataContext.ModifyCommand}" CommandParameter="{Binding SelectedItem}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+
+                    <dxg:GridControl.Columns>
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Tipo Iva" Binding="{Binding TipoIva1, UpdateSourceTrigger=PropertyChanged}" Width="25*" />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Cuenta Contable" Binding="{Binding CuentaContable, UpdateSourceTrigger=PropertyChanged}" Width="25*" />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Iva" Binding="{Binding Iva, UpdateSourceTrigger=PropertyChanged}" Width="25*" />
+                        <dxg:GridColumn HeaderStyle="{StaticResource gridColumnMantenimiento}" ColumnHeaderContentStyle="{StaticResource gridStyleMantenimiento}" Header="Empresa" Binding="{Binding IdEmpresaNavigation.Empresa, UpdateSourceTrigger=PropertyChanged}"  Width="25*" />
+                    </dxg:GridControl.Columns>
+                </dxg:GridControl>
+            </Border>
+        </DockPanel>
+    </Grid>
+</UserControl>

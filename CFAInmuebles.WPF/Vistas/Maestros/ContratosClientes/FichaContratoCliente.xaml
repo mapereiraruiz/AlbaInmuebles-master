@@ -1,0 +1,138 @@
+﻿<UserControl x:Class="CFAInmuebles.WPF.FichaContratoCliente"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             Template="{StaticResource UserControlMaestroVM}"
+             Style="{StaticResource CustomStyleUserControl}"
+             xmlns:local="clr-namespace:CFAInmuebles.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type local:AltaContratoClienteVM}" >
+            <local:AltaContratoCliente />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaContratoClienteIdentificacionVM}" >
+            <local:AltaContratoClienteIdentificacion />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaContratoClienteDatosFacturacionVM}" >
+            <local:AltaContratoClienteDatosFacturacion />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaContratoClienteAvalFianzaVM}" >
+            <local:AltaContratoClienteAvalFianza />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ContratoClienteFacturasVM}" >
+            <local:ContratoClienteFacturas />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ContratoClienteTareasVM}" >
+            <local:ContratoClienteTareas/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ContratoClienteIncidenciasVM}" >
+            <local:ContratoClienteIncidencias/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ContratoClienteArticulosVM}" >
+            <local:ContratoClienteArticulos/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ContratoClienteHistorialOcupacionVM}" >
+            <local:ContratoClienteHistorialOcupacion/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ContratoClientePeriodosBajaVM}" >
+            <local:ContratoClientePeriodosBaja/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ContratoClienteDatosImprimirVM}" >
+            <local:ContratoClienteDatosImprimir/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ContratoClienteObrasVM}" >
+            <local:ContratoClienteObras/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ContratoClienteAvalFianzaVM}" >
+            <local:ContratoClienteAvalFianza/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ContratoClienteContactosVM}" >
+            <local:ContratoClienteContactos/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaContactoContratoClienteVM}" >
+            <local:AltaContactoContratoCliente />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ContratoClienteHistoricoVM}" >
+            <local:ContratoClienteHistorico />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaPeriodoBajaContratoClienteVM}" >
+            <local:AltaPeriodoBajaContratoCliente />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:AltaDatosImprimirContratoClienteVM}" >
+            <local:AltaDatosImprimirContratoCliente />
+        </DataTemplate>
+    </UserControl.Resources>
+    
+    <DockPanel Margin="20">
+        <Menu DockPanel.Dock="Top" HorizontalAlignment="Left" Padding="3" Style="{StaticResource menuItemMaestro}"   >
+            <MenuItem Header="Identificación Artículo"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding AltaContratoCliente}" Margin="2,5"/>
+
+            <MenuItem Header="Identificación"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding AltaContratoClienteIdentificacion}" Margin="2,5"/>
+
+
+            <MenuItem Header="Datos Facturación"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding AltaContratoClienteDatosFacturacion}" Margin="2,5"/>
+
+            <MenuItem Header="Aval/Fianza"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding AltaContratoClienteAvalFianza}"  Margin="2,5"/>
+
+            <MenuItem Header="Facturas"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ContratoClienteFacturas}" Margin="2,5"/>
+           
+            <MenuItem Header="Tareas"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ContratoClienteTareas}" Margin="2,5"/>
+            
+            <MenuItem Header="Incidencias"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ContratoClienteIncidencias}" Margin="2,5"/>
+            
+            <MenuItem Header="Artículos"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ContratoClienteArticulos}" Margin="2,5"/>
+
+            <MenuItem Header="Historial Ocupación"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ContratoClienteHistorialOcupacion}" Margin="2,5"/>
+
+            <MenuItem Header="Periodos de Baja"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ContratoClientePeriodosBaja}" Margin="2,5"/>
+            
+            <MenuItem Header="Datos a Imprimir"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ContratoClienteDatosImprimir}" Margin="2,5"/>
+
+            <MenuItem Header="Obras"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ContratoClienteObras}" Margin="2,5"/>
+
+            <!--<MenuItem Header="Aval y Fianzas"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ContratoClienteAvalFianza}" Margin="2,5"/>-->
+
+            <MenuItem Header="Contactos"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ContratoClienteContactos}" Margin="2,5"/>
+            
+            <MenuItem Header="Histórico Modificaciones"
+                        Command="{Binding DataContext.ChangePageCommand, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        CommandParameter="{Binding ContratoClienteHistorico}" Margin="2,5"/>
+
+        </Menu>
+
+        <ContentControl  Margin="5" Content="{Binding Path=CurrentPageViewModel}" />
+
+    </DockPanel>
+
+</UserControl>
