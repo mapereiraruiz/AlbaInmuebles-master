@@ -245,6 +245,7 @@ namespace CFAInmuebles.WPF
             }
             catch(Exception ex)
             {
+
                 MensajeResultado = "El fichero no ha podido generarse.";
             }
 
