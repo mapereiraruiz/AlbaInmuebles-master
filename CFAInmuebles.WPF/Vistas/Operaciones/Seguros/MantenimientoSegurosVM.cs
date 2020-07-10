@@ -237,6 +237,7 @@ namespace CFAInmuebles.WPF
 
             Visibility = Visibility.Visible;
 
+
             try
             {
                 Excel.Save();
